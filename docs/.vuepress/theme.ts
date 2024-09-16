@@ -78,7 +78,7 @@ export default hopeTheme({
     intro: "/intro.html",
     medias: {
       GitHub: "https://github.com/YuanaHao",
-      Wechat: "/img/WeChat.png",
+      Wechat: "/img/wechat.png",
       Email: "mailto:2131693324@qq.com",
     },
   },
