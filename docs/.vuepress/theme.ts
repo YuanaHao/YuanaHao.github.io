@@ -22,7 +22,7 @@ export default hopeTheme({
   // copyright 默认为 Copyright © <作者>
   copyright: `
   版权声明：自由转载 - 非商用 - 非衍生 - 保持署名<a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh-hans" target="_blank" rel="noopener noreferrer">（创意共享 4.0 许可证）</a>|
-  Copyright © 2023-present LearnData</a>
+  Copyright © 2024-present LearnData</a>
   `,
   displayFooter: true,
   // 页脚，支持使用 HTMLString 以显示备案信息等
@@ -42,7 +42,7 @@ export default hopeTheme({
   fullscreen: true,
 
   // 默认为 GitHub. 同时也可以是一个完整的 URL
-  repo: "rockbenben/LearnData",
+  repo: "YuanaHao",
   // 自定义仓库链接文字。默认从 `repo` 中自动推断为 "GitHub" / "GitLab" / "Gitee" / "Bitbucket" 其中之一，或是 "Source"。
   repoLabel: "GitHub",
   // 是否在导航栏内显示仓库链接，默认为 `true`
@@ -56,7 +56,7 @@ export default hopeTheme({
   navbarLayout: {
     start: ["Brand"],
     center: ["Links"],
-    end: ["SocialLink", "Repo", "Outlook", "Search"],
+    end: ["Repo", "Outlook", "Search"],
   },
   // 是否在向下滚动时自动隐藏导航栏
   // navbarAutoHide: "always",
@@ -72,18 +72,14 @@ export default hopeTheme({
   // 主题功能选项：https://theme-hope.vuejs.press/zh/config/theme/feature.html
   blog: {
     articleInfo: ["Date", "PageView", "Category", "Tag", "ReadingTime"],
-    name: "清顺",
-    avatar: "/avatar_self.webp",
-    description: "迷信新工具，热衷于研究开源软件、心理学理论，定期分享探索成果",
+    name: "YuanaHao",
+    avatar: "/img/figure.png",
+    description: "计算机本科小白学习ing",
     intro: "/intro.html",
     medias: {
-      GitHub: "https://github.com/rockbenben",
-      Zhihu: "https://www.zhihu.com/people/qingwhat",
-      少数派: { icon: "https://newzone.top/icons/sspai.svg", link: "https://sspai.com/u/zqj05i4v/posts" },
-      Wechat: "https://img.newzone.top/wechat.svg",
-      Email: "mailto:learndata@newzone.top",
-      Discord: "https://discord.gg/PZTQfJ4GjX",
-      RSS: "/rss.xml",
+      GitHub: "https://github.com/YuanaHao",
+      Wechat: "img/Wechat.png",
+      Email: "mailto:2131693324@qq.com",
     },
   },
 
@@ -131,10 +127,10 @@ export default hopeTheme({
 
       // Giscus
       provider: "Giscus",
-      repo: "rockbenben/LearnData",
-      repoId: "R_kgDOHdfk6Q",
+      repo: "YuanaHao/yuanahao.github.io",
+      repoId: "R_kgDOMyTFNQ",
       category: "Comments",
-      categoryId: "DIC_kwDOHdfk6c4CQYNn",
+      categoryId: "DIC_kwDOMyTFNc4Cigoj",
     },
 
     // 组件库
