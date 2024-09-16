@@ -24,7 +24,7 @@ export default sidebar({
               text: "CS149",
               link: "/blog/experiment/CS149/",
               collapsible: true,
-              children: ["CS149_asst1.md"]
+              children: ["/blog/experiment/CS149/CS149_asst1.md"]
             }
           ],
         },
