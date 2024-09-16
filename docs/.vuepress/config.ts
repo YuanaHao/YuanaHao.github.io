@@ -26,13 +26,13 @@ export default defineUserConfig({
   // 禁止文件夹生成静态文件，参考 [VuePress 文档]（https://v2.vuepress.vuejs.org/zh/guide/page.html#routing）
   pagePatterns: ["**/*.md", "!_temp", "!reading", "!.vuepress", "!node_modules"],
 
-  plugins: [
-    // 谷歌分析
-    googleAnalyticsPlugin({
-      // 设置你的 Analytics ID
-      id: "G-RWKZTY2P9R",
-    }),
-  ],
+  // plugins: [
+  //   // 谷歌分析
+  //   googleAnalyticsPlugin({
+  //     // 设置你的 Analytics ID
+  //     id: "G-RWKZTY2P9R",
+  //   }),
+  // ],
   bundler: webpackBundler({
     postcss: {},
     vue: {},
