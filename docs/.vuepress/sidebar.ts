@@ -4,8 +4,6 @@ import { sidebar } from "vuepress-theme-hope";
 // https://fontawesome.com/search?m=free&o=r
 export default sidebar({
   "": [
-    "/DailyRoutine",
-    "/Fitness",
     {
       text: "博客文章",
       icon: "fa6-solid:feather-pointed",
