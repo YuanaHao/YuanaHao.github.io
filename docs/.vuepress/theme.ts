@@ -73,12 +73,12 @@ export default hopeTheme({
   blog: {
     articleInfo: ["Date", "PageView", "Category", "Tag", "ReadingTime"],
     name: "YuanaHao",
-    avatar: "public/figure.webp",
+    avatar: "/public/figure.webp",
     description: "零基础小白学习计算机ing",
     intro: "/intro.html",
     medias: {
       GitHub: "https://github.com/YuanaHao",
-      Wechat: "public/WeChat.webp",
+      Wechat: "/public/WeChat.webp",
       Email: "mailto:2131693324@qq.com",
     },
   },
@@ -128,9 +128,9 @@ export default hopeTheme({
       // Giscus
       provider: "Giscus",
       repo: "YuanaHao/yuanahao.github.io",
-      repoId: "R_kgDOHdfk6Q",
+      repoId: "R_kgDOMyTFNQ",
       category: "Comments",
-      categoryId: "DIC_kwDOHdfk6c4CQYNn",
+      categoryId: "DIC_kwDOMyTFNc4Cigoj",
     },
 
     // 组件库
