@@ -73,12 +73,12 @@ export default hopeTheme({
   blog: {
     articleInfo: ["Date", "PageView", "Category", "Tag", "ReadingTime"],
     name: "YuanaHao",
-    avatar: "/public/figure.webp",
+    avatar: "/figure.webp",
     description: "零基础小白学习计算机ing",
     intro: "/intro.html",
     medias: {
       GitHub: "https://github.com/YuanaHao",
-      Wechat: "/public/WeChat.webp",
+      Wechat: "/WeChat.webp",
       Email: "mailto:2131693324@qq.com",
     },
   },
