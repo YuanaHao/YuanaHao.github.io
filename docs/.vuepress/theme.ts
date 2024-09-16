@@ -73,12 +73,12 @@ export default hopeTheme({
   blog: {
     articleInfo: ["Date", "PageView", "Category", "Tag", "ReadingTime"],
     name: "YuanaHao",
-    avatar: "public/figure.jpg",
+    avatar: "public/figure.webp",
     description: "零基础小白学习计算机ing",
     intro: "/intro.html",
     medias: {
       GitHub: "https://github.com/YuanaHao",
-      Wechat: "public/WeChat.jpg",
+      Wechat: "public/WeChat.webp",
       Email: "mailto:2131693324@qq.com",
     },
   },
@@ -127,7 +127,7 @@ export default hopeTheme({
 
       // Giscus
       provider: "Giscus",
-      repo: "rockbenben/LearnData",
+      repo: "YuanaHao/yuanahao.github.io",
       repoId: "R_kgDOHdfk6Q",
       category: "Comments",
       categoryId: "DIC_kwDOHdfk6c4CQYNn",
@@ -162,13 +162,11 @@ export default hopeTheme({
     },
 
     // Algolia 全文搜索：需要自己设置爬虫并生成下方配置，如不会自己设置，启用下方本地搜索
-    /* 
     docsearch: {
       indexName: "newzone",
       appId: "M4EXXEZIEG",
       apiKey: "fd8891a9c4cc21e0ef4f11bf44f7a11e",
     },
-    */
 
     // 本地搜索，和上方二选一
     searchPro: {
