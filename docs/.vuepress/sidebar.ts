@@ -10,6 +10,7 @@ export default sidebar({
       prefix: "/_posts/",
       link: "/blog",
       collapsible: true,
+      children: "structure",
     },
   ],
   // 专题区（独立侧边栏）
