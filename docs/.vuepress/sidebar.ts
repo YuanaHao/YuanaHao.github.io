@@ -14,35 +14,45 @@ export default sidebar({
         {
           text: "算法学习",
           prefix: "/_posts/algorithm/",
-          link: "/blog",
+          link: "/algorithm",
         },
         {
           text: "实验笔记",
           prefix: "/_posts/expriment/",
-          link: "/blog",
+          link: "/experiment",
           collapsible: true,
           children: [
             {
               text: "CS149",
               prefix: "/_posts/expriment/CS149/",
-              link: "/blog",
+              link: "/CS149",
               collapsible: true,
-              children: ["CS149_asst1.md"]
+              children: [
+                {
+                  text: "CS149_asst1",
+                  link: "/CS149_asst1",
+                }
+              ]
             }
           ],
         },
         {
           text: "计算机优质课程",
           prefix: "/_posts/course/",
-          link: "/blog",
+          link: "/course",
           collapsible: true,
           children: [
             {
               text: "CS149",
               prefix: "/_posts/course/CS149/",
-              link: "/blog",
+              link: "/CS149",
               collapsible: true,
-              children: ["CS149.md"]
+              children: [
+                {
+                  text: "CS149",
+                  link: "/CS149",
+                }
+              ]
             }
           ],
         },
