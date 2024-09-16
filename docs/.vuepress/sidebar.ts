@@ -18,6 +18,15 @@ export default sidebar({
         {
           text: "实验笔记",
           link: "/blog/experiment/",
+          collapsible: true,
+          children: [
+            {
+              text: "CS149",
+              link: "/blog/experiment/CS149/",
+              collapsible: true,
+              children: ["CS149_asst1.md"]
+            }
+          ],
         },
         {
           text: "计算机优质课程",
