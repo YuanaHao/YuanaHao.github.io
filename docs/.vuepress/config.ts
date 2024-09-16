@@ -11,9 +11,9 @@ export default defineUserConfig({
   // 网站语言，默认为中文
   lang: "zh-CN",
   // 网站标题
-  title: "CS_Blog",
+  title: "LearnData 开源笔记",
   // 网站描述
-  description: "算法学习、实验笔记、计算机优质课程等心得博客分享平台。",
+  description: "开源工具、效率方法、心理学探索的自我提升笔记，记录并输出一切能让自己提升的知识。",
 
   theme,
   // 是否开启页面预拉取，如果服务器宽带足够，可改为 true，会提升其他页面加载速度
@@ -26,13 +26,13 @@ export default defineUserConfig({
   // 禁止文件夹生成静态文件，参考 [VuePress 文档]（https://v2.vuepress.vuejs.org/zh/guide/page.html#routing）
   pagePatterns: ["**/*.md", "!_temp", "!reading", "!.vuepress", "!node_modules"],
 
-  // plugins: [
-  //   // 谷歌分析
-  //   googleAnalyticsPlugin({
-  //     // 设置你的 Analytics ID
-  //     id: "G-RWKZTY2P9R",
-  //   }),
-  // ],
+  plugins: [
+    // 谷歌分析
+    googleAnalyticsPlugin({
+      // 设置你的 Analytics ID
+      id: "G-RWKZTY2P9R",
+    }),
+  ],
   bundler: webpackBundler({
     postcss: {},
     vue: {},
