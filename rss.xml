@@ -2,12 +2,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/">
   <channel>
     <atom:link href="https://newzone.top/rss.xml" rel="self" type="application/rss+xml"/>
-    <title>CS_Blog</title>
+    <title>LearnData 开源笔记</title>
     <link>https://newzone.top/</link>
-    <description>算法学习、实验笔记、计算机优质课程等心得博客分享平台。</description>
+    <description>开源工具、效率方法、心理学探索的自我提升笔记，记录并输出一切能让自己提升的知识。</description>
     <language>zh-CN</language>
-    <pubDate>Mon, 16 Sep 2024 12:43:36 GMT</pubDate>
-    <lastBuildDate>Mon, 16 Sep 2024 12:43:36 GMT</lastBuildDate>
+    <pubDate>Mon, 16 Sep 2024 12:57:39 GMT</pubDate>
+    <lastBuildDate>Mon, 16 Sep 2024 12:57:39 GMT</lastBuildDate>
     <generator>@vuepress/plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <category>CS149</category>
@@ -58,7 +58,6 @@
 <p>事实上task中给的提示还是比较明显的, 在<code>task1</code>中解释了空间分解的概念, 那么通过对图片本身的<code>上下多份分割</code>,就可以解决这个问题,要注意分割的时候会不会漏行.</p>
 <h3>任务实现</h3>
 <p>我们将一开始就对任务给出泛型的解决方式, 并在后续针对数据结果决定是否要进行优化.</p>
-<p>首先考虑</p>
 ]]></content:encoded>
     </item>
   </channel>

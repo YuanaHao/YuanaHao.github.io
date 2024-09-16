@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xsl" href="https://newzone.top/atom.xsl"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN">
   <id>https://newzone.top/</id>
-  <title>CS_Blog</title>
-  <subtitle>算法学习、实验笔记、计算机优质课程等心得博客分享平台。</subtitle>
-  <updated>2024-09-16T12:43:36.115Z</updated>
+  <title>LearnData 开源笔记</title>
+  <subtitle>开源工具、效率方法、心理学探索的自我提升笔记，记录并输出一切能让自己提升的知识。</subtitle>
+  <icon>https://newzone.top/favicon.ico</icon>
+  <updated>2024-09-16T12:57:39.059Z</updated>
   <generator>@vuepress/plugin-feed</generator>
   <link rel="self" href="https://newzone.top/atom.xml"/>
   <link rel="alternate" href="https://newzone.top/"/>
@@ -25,7 +26,7 @@
     <title type="text">CS149 Lab Assignment1</title>
     <id>https://newzone.top/posts/CS149_asst1.html</id>
     <link href="https://newzone.top/posts/CS149_asst1.html"/>
-    <updated>2024-09-16T12:33:39.000Z</updated>
+    <updated>2024-09-16T12:56:30.000Z</updated>
     <summary type="html"><![CDATA[<h2>Prog1_mandelbort_threads</h2>
 <h3>环境配置</h3>
 <p>本人使用OS为<code>Ubuntu 22.04</code>, 还是建议使用Linux系统做Lab, 很多环境配置会方便一些.</p>
@@ -60,7 +61,6 @@
 <p>事实上task中给的提示还是比较明显的, 在<code>task1</code>中解释了空间分解的概念, 那么通过对图片本身的<code>上下多份分割</code>,就可以解决这个问题,要注意分割的时候会不会漏行.</p>
 <h3>任务实现</h3>
 <p>我们将一开始就对任务给出泛型的解决方式, 并在后续针对数据结果决定是否要进行优化.</p>
-<p>首先考虑</p>
 ]]></content>
     <category term="CS149_Lab"/>
     <published>2024-09-16T00:00:00.000Z</published>
