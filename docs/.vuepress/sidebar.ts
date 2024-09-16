@@ -10,7 +10,20 @@ export default sidebar({
       prefix: "/_posts/",
       link: "/blog",
       collapsible: true,
-      children: "structure",
+      children: [
+        {
+          text: "算法学习",
+          link: "/blog/algorithm/",
+        },
+        {
+          text: "实验笔记",
+          link: "/blog/experiment/",
+        },
+        {
+          text: "计算机优质课程",
+          link: "/blog/course/",
+        },
+      ]
     },
   ],
   // 专题区（独立侧边栏）
