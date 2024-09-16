@@ -10,25 +10,6 @@ export default sidebar({
       prefix: "/_posts/",
       link: "/blog",
       collapsible: true,
-      children: [
-        {
-          text: "实验笔记",
-          icon: "fa6-solid:feather-pointed",
-          prefix: "/_posts/experiment/",
-          link: "/blog",
-          collapsible: true,
-          children: [
-            {
-              text: "CS149",
-              icon: "fa6-solid:feather-pointed",
-              prefix: "/_posts/experiment/CS149/",
-              link: "/blog",
-              collapsible: true,
-              children: ["/blog/CS149_asst1.md"]
-            }
-          ]
-        }
-      ]
     },
   ],
   // 专题区（独立侧边栏）
