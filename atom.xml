@@ -4,12 +4,101 @@
   <title>CS_Blog</title>
   <subtitle>算法学习, 计算机公开课博客分享平台。</subtitle>
   <icon>https://newzone.top/favicon.ico</icon>
-  <updated>2024-09-16T15:58:47.726Z</updated>
+  <updated>2024-09-17T02:49:51.730Z</updated>
   <generator>@vuepress/plugin-feed</generator>
   <link rel="self" href="https://newzone.top/atom.xml"/>
   <link rel="alternate" href="https://newzone.top/"/>
+  <category term="数据结构与算法"/>
   <category term="CS149"/>
   <category term="CS149_Lab"/>
+  <entry>
+    <title type="text">阶乘的位数估算--数学在计算机算法研究中的作用</title>
+    <id>https://newzone.top/posts/factorial_Stirling.html</id>
+    <link href="https://newzone.top/posts/factorial_Stirling.html"/>
+    <updated>2024-09-17T02:48:51.000Z</updated>
+    <summary type="html"><![CDATA[<h2>题目引入</h2>
+<blockquote>
+<p>算法与数据结构实验题 1.10 单身狗进化
+这一天晚上，弯通又做梦了，并且梦到了一个帅气的男孩纸！这个男孩给了弯通一个数字 n。男孩离开前告诉弯通，n!（n 的阶乘）的位数就是距离弯通脱单的天数。矜（ji）持（ke）的弯通想知道自己还有多久能脱单，快写个程序帮助他！<br>
+输入:<br>
+输入第一行为一个正整数 n（1&lt;=n&lt;=25000）。<br>
+输出:<br>
+n阶乘的位数</p>
+</blockquote>
+<h2>题目分析</h2>
+<p>这道题看上去还挺有意思的<s>很符合大学生的心理状态</s>, 实际上就是要求阶乘的位数<s>倒也没有拐弯抹角</s>.<br>
+但是我们都知道, 要是用<code>递归</code>或者<code>循环</code>写阶乘, 这将是一件极为恐怖的事情.<br>
+在数据存储(空间复杂度)&amp;计算用时(时间复杂度)上的开销, 将成为任何一台机器的噩梦, 更不可能过测试了.<br>
+举个栗子:</p>]]></summary>
+    <content type="html"><![CDATA[<h2>题目引入</h2>
+<blockquote>
+<p>算法与数据结构实验题 1.10 单身狗进化
+这一天晚上，弯通又做梦了，并且梦到了一个帅气的男孩纸！这个男孩给了弯通一个数字 n。男孩离开前告诉弯通，n!（n 的阶乘）的位数就是距离弯通脱单的天数。矜（ji）持（ke）的弯通想知道自己还有多久能脱单，快写个程序帮助他！<br>
+输入:<br>
+输入第一行为一个正整数 n（1&lt;=n&lt;=25000）。<br>
+输出:<br>
+n阶乘的位数</p>
+</blockquote>
+<h2>题目分析</h2>
+<p>这道题看上去还挺有意思的<s>很符合大学生的心理状态</s>, 实际上就是要求阶乘的位数<s>倒也没有拐弯抹角</s>.<br>
+但是我们都知道, 要是用<code>递归</code>或者<code>循环</code>写阶乘, 这将是一件极为恐怖的事情.<br>
+在数据存储(空间复杂度)&amp;计算用时(时间复杂度)上的开销, 将成为任何一台机器的噩梦, 更不可能过测试了.<br>
+举个栗子:</p>
+<div class="language-用循环计算阶乘 line-numbers-mode" data-highlighter="shiki" data-ext="用循环计算阶乘" data-title="用循环计算阶乘" style="--shiki-light:#24292e;--shiki-dark:#abb2bf;--shiki-light-bg:#fff;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes github-light one-dark-pro vp-code"><code><span class="line"><span>    int n;</span></span>
+<span class="line"><span>    long long ans = 1;</span></span>
+<span class="line"><span>    std::cin &gt;&gt; n;</span></span>
+<span class="line"><span>    for (int i = 1; i &lt; MAX; i++)</span></span>
+<span class="line"><span>        ans *= i;</span></span>
+<span class="line"><span>    std::cout &lt;&lt; ans;</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>大家可以简单跑一下这个程序, 然后就会发现, 在<code>n = 27</code>的时候, 就已经溢出了, 完全无法满足题目要求.<br>
+这就是第一种错误的可能, 忘记了估计数据规模, 随便算算就存爆了.</p>
+<p>还有一种可能, 就是采用高精度的算法, 将阶乘结果用表存储, 每个内存存有限位数据, 在乘法时做类似竖式乘法的高精度运算.</p>
+<p>这种方式能不能过这个题我没有试过<s>因为我懒</s>, 但是一般来说高精度阶乘的时间复杂度是$O(n^{2})$</p>
+<p>程序代码的复杂度和 <code>n = 25000</code> 所要存储的数据规模, 也会是比较大的开销.</p>
+<p>下文将介绍一种用数学方法巧妙估算阶乘结果规模的方式.</p>
+<h2>斯特林公式</h2>
+<p>$$ n!\approx {\sqrt {2\pi n}},\left({\frac {n}{e}}\right)^{n} $$</p>
+<p>这个公式以<code>詹姆斯·斯特林</code>的名字命名，虽然<code>亚伯拉罕·棣美弗</code>早于斯特林提出了一个类似的公式，但结果较不精确.<br>
+当n很大的时候，n阶乘的计算量十分大，所以斯特林公式十分好用，而且，即使在n很小的时候，斯特林公式的取值已经十分准确.</p>
+<p>可以通过计算对比来估计一下斯特林公式算出结果, 和阶乘计算结果的误差程度.</p>
+<figure><figcaption>Stirling Approximation Relative Error vs n</figcaption></figure>
+<p>我们可以看到, 随着n的增大, 斯特林公式估算的误差已经降到了十万分之一以下, 这对估算阶乘的规模来说是完全可以接受的误差.</p>
+<p>通过斯特林公式我们可以简单估算阶乘的位数, 我们知道对于一个n进制数x, 都可以对其取$ [\log_{n}x] + 1 $来得到这个n进制数的位数, 我们将进一步推导<code>用斯特林公式估算阶乘位数N</code>的公式.</p>
+<p>$$ N = [log_{10}[{\sqrt {2\pi n}},\left({\frac {n}{e}}\right)^{n}]] + 1 $$<br>
+其中内层中括号标记运算顺序, 外层中括号意为高斯取整(即向下取整).</p>
+<p>$$ N = [\frac{1}{2}log_{10}(2\pi n) + nlog_{10}(\frac{n}{e})] + 1 $$</p>
+<p>通过代入n, 即可轻松求得$n!$的位数, 时间复杂度是梦寐以求的O(1), 即常数时间复杂度.</p>
+<h2>代码实现</h2>
+<p>代码实现没什么好说的, 套公式罢了, 由于我之前已经测试过最大数据规模, 所以<code>ans</code>也是为了省事儿用的<code>int</code><s>偷懒是可耻的</s></p>
+<div class="language- line-numbers-mode" data-highlighter="shiki" data-ext="" data-title="" style="--shiki-light:#24292e;--shiki-dark:#abb2bf;--shiki-light-bg:#fff;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes github-light one-dark-pro vp-code"><code><span class="line"><span>  #include &lt;stdio.h&gt;</span></span>
+<span class="line"><span>  #include &lt;math.h&gt;</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  #define PI 3.141592654</span></span>
+<span class="line"><span>  #define E 2.71828182846</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  int pos(int n)</span></span>
+<span class="line"><span>  {</span></span>
+<span class="line"><span>      int s = 1;</span></span>
+<span class="line"><span>      if(n &gt; 3)</span></span>
+<span class="line"><span>          s = log10(2*PI*n) / 2 + n * log10(n/E) + 1;</span></span>
+<span class="line"><span>      return s;</span></span>
+<span class="line"><span>  }</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  int main()</span></span>
+<span class="line"><span>  {</span></span>
+<span class="line"><span>      int num, ans;</span></span>
+<span class="line"><span>      scanf("%d", &amp;num);</span></span>
+<span class="line"><span>      ans = pos(num);</span></span>
+<span class="line"><span>      printf("%d", ans);</span></span>
+<span class="line"><span>  }</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2>总结</h2>
+<blockquote>
+<p>数即一切</p>
+</blockquote>
+]]></content>
+    <category term="数据结构与算法"/>
+    <published>2024-09-17T00:00:00.000Z</published>
+  </entry>
   <entry>
     <title type="text">CS149_Course</title>
     <id>https://newzone.top/posts/CS149.html</id>
