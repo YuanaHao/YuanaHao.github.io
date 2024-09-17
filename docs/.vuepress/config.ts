@@ -1,7 +1,7 @@
 import { webpackBundler } from "@vuepress/bundler-webpack";
 import { defineUserConfig } from "vuepress";
 import { googleAnalyticsPlugin } from "@vuepress/plugin-google-analytics";
-
+import { mdEnhancePlugin } from "vuepress-plugin-md-enhance";
 import theme from "./theme.js";
 
 export default defineUserConfig({
@@ -33,6 +33,12 @@ export default defineUserConfig({
   //     id: "G-RWKZTY2P9R",
   //   }),
   // ],
+  plugins: [
+    mdEnhancePlugin({
+      // 使用 KaTeX 启用 TeX 支持
+      katex: true,
+    }),
+  ],
   bundler: webpackBundler({
     postcss: {},
     vue: {},
