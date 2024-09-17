@@ -8,10 +8,10 @@ export default hopeTheme({
   // 公用 CDN 在部分浏览器中可能无法正确显示图标。2024.07 开始，uBlock Origin 将拦截公有 CDN 的 js 请求。
   // https://icon-sets.iconify.design/
   iconAssets: "iconify",
-  author: {
-    name: "LearnData",
-    url: "https://newzone.top",
-  },
+  // author: {
+  //   name: "YuanaHao",
+  //   url: "https://newzone.top",
+  // },
 
   favicon: "/favicon.ico",
   logo: "/logo.svg",
@@ -22,7 +22,7 @@ export default hopeTheme({
   // copyright 默认为 Copyright © <作者>
   copyright: `
   版权声明：自由转载 - 非商用 - 非衍生 - 保持署名<a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh-hans" target="_blank" rel="noopener noreferrer">（创意共享 4.0 许可证）</a>|
-  Copyright © 2024-present LearnData</a>
+  Copyright © 2024-present YuanaHao</a>
   `,
   displayFooter: true,
   // 页脚，支持使用 HTMLString 以显示备案信息等
@@ -103,7 +103,7 @@ export default hopeTheme({
         "https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-y/twemoji/13.1.0/72x72/1f635-200d-1f4ab.png",
       ],
       // 部署 Waline：https://waline.js.org/guide/get-started.html
-      // pageview: true, // 浏览量统计
+      pageview: true, // 浏览量统计
       locales: {
         "/": {
           // 表情互动提示文字
@@ -159,7 +159,6 @@ export default hopeTheme({
       align: true, // 启用自定义对齐
       // codetabs: true, // 代码块分组
       demo: true, //代码演示
-      math: true, // 数学公式
     },
 
     // Algolia 全文搜索：需要自己设置爬虫并生成下方配置，如不会自己设置，启用下方本地搜索
