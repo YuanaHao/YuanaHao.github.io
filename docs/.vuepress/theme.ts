@@ -129,7 +129,7 @@ export default hopeTheme({
       provider: "Giscus",
       repo: "YuanaHao/yuanahao.github.io",
       repoId: "R_kgDOMyTFNQ",
-      category: "Comments",
+      category: "Announcements",
       categoryId: "DIC_kwDOMyTFNc4Cigoj",
     },
 
