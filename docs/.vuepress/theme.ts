@@ -146,7 +146,7 @@ export default hopeTheme({
       tasklist: true, // 任务列表
       figure: true, // 启用 figure
       imgLazyload: true, // 启用图片懒加载
-      // imgMark: true, // 启用图片标记
+      imgMark: true, // 启用图片标记
       imgSize: true, // 启用图片大小
       include: true, //导入文件
       component: true, // 使用 component 代码块来在 Markdown 中添加组件
@@ -158,7 +158,8 @@ export default hopeTheme({
       mark: true, // 使用 == == 进行标记。请注意两边需要有空格。
       align: true, // 启用自定义对齐
       // codetabs: true, // 代码块分组
-      // demo: true, //代码演示
+      demo: true, //代码演示
+      math: true, // 数学公式
     },
 
     // Algolia 全文搜索：需要自己设置爬虫并生成下方配置，如不会自己设置，启用下方本地搜索
