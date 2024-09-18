@@ -2,7 +2,7 @@
 # 文章标题
 title: CS149 Lab Assignment1
 # 设置写作时间
-date: 2024-09-16
+date: 2024-09-18
 # 一个页面可以有多个分类
 category:
   - CS149_Lab
