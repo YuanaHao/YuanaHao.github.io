@@ -68,4 +68,31 @@ task :
 
 ### 任务实现
 
-我们将一开始就对任务给出泛型的解决方式, 并在后续针对数据结果决定是否要进行优化.  
+我们将一开始就对任务给出多线程的解决方式, 并在后续针对数据结果决定是否要进行优化.  
+
+首先我们可以根据阅读`mandelbrotSerial.cpp`中的源码, 得到mandelbrotSerial()函数事实上是用来计算`Mandelbrot`图像的, 可以简单分析一下`mandelbrotSerial()`函数的各个参数:  
+
+```
+    void mandelbrotSerial(
+    float x0, float y0, float x1, float y1, // 复平面左上和右下两个点坐标
+    int width, int height,                  // 图像宽度和高度
+    int startRow, int numRows,              // 开始行和总计算行数
+    int maxIterations,                      // 最大迭代次数
+    int output[]);                          // 每个点的迭代次数
+```  
+
+不难发现只要我们给出`startRow`, `numRows`, 其余保持图像默认参数, 就可以完成计算了.  
+所以可以给出函数`workerThreadStart(WorkerArgs * const args)`的代码:  
+
+```
+    size_t rows = args -> height / args -> numThreads;          // 确定要计算的行数
+    if (args -> height % args -> numThreads) {                  // 如果该遇到整除要加一行避免遗漏
+        rows++;
+    }
+    size_t startRow = args -> threadId * rows;                  // 确定开始行
+    // 如果已经到最后部分不够切分, 直接处理最后部分
+    rows = rows > args -> height - startRow ? args -> height - startRow : rows;
+    // 调用mandelbrotSerial
+    mandelbrotSerial(args -> x0, args -> y0, args -> x1, args -> y1, args -> width, 
+                    args -> height, startRow, rows, args -> maxIterations, args -> output);
+``` 
