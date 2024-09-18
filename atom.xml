@@ -4,7 +4,7 @@
   <title>CS_Blog</title>
   <subtitle>算法学习, 计算机公开课博客分享平台。</subtitle>
   <icon>https://newzone.top/favicon.ico</icon>
-  <updated>2024-09-18T15:46:40.963Z</updated>
+  <updated>2024-09-18T15:48:55.686Z</updated>
   <generator>@vuepress/plugin-feed</generator>
   <link rel="self" href="https://newzone.top/atom.xml"/>
   <link rel="alternate" href="https://newzone.top/"/>
@@ -139,7 +139,7 @@ N = [\frac{1}{2}log_{10}(2\pi n) + nlog_{10}(\frac{n}{e})] + 1
     <title type="text">CS149 Lab Assignment1</title>
     <id>https://newzone.top/posts/CS149_asst1.html</id>
     <link href="https://newzone.top/posts/CS149_asst1.html"/>
-    <updated>2024-09-16T12:56:30.000Z</updated>
+    <updated>2024-09-18T15:47:45.000Z</updated>
     <summary type="html"><![CDATA[<h2>Prog1_mandelbort_threads</h2>
 <h3>环境配置</h3>
 <p>本人使用OS为<code>Ubuntu 22.04</code>, 还是建议使用Linux系统做Lab, 很多环境配置会方便一些.</p>
@@ -173,8 +173,27 @@ N = [\frac{1}{2}log_{10}(2\pi n) + nlog_{10}(\frac{n}{e})] + 1
 </ul>
 <p>事实上task中给的提示还是比较明显的, 在<code>task1</code>中解释了空间分解的概念, 那么通过对图片本身的<code>上下多份分割</code>,就可以解决这个问题,要注意分割的时候会不会漏行.</p>
 <h3>任务实现</h3>
-<p>我们将一开始就对任务给出泛型的解决方式, 并在后续针对数据结果决定是否要进行优化.</p>
-]]></content>
+<p>我们将一开始就对任务给出多线程的解决方式, 并在后续针对数据结果决定是否要进行优化.</p>
+<p>首先我们可以根据阅读<code>mandelbrotSerial.cpp</code>中的源码, 得到mandelbrotSerial()函数事实上是用来计算<code>Mandelbrot</code>图像的, 可以简单分析一下<code>mandelbrotSerial()</code>函数的各个参数:</p>
+<div class="language- line-numbers-mode" data-highlighter="shiki" data-ext="" data-title="" style="--shiki-light:#24292e;--shiki-dark:#abb2bf;--shiki-light-bg:#fff;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes github-light one-dark-pro vp-code"><code><span class="line"><span>    void mandelbrotSerial(</span></span>
+<span class="line"><span>    float x0, float y0, float x1, float y1, // 复平面左上和右下两个点坐标</span></span>
+<span class="line"><span>    int width, int height,                  // 图像宽度和高度</span></span>
+<span class="line"><span>    int startRow, int numRows,              // 开始行和总计算行数</span></span>
+<span class="line"><span>    int maxIterations,                      // 最大迭代次数</span></span>
+<span class="line"><span>    int output[]);                          // 每个点的迭代次数</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>不难发现只要我们给出<code>startRow</code>, <code>numRows</code>, 其余保持图像默认参数, 就可以完成计算了.<br>
+所以可以给出函数<code>workerThreadStart(WorkerArgs * const args)</code>的代码:</p>
+<div class="language- line-numbers-mode" data-highlighter="shiki" data-ext="" data-title="" style="--shiki-light:#24292e;--shiki-dark:#abb2bf;--shiki-light-bg:#fff;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes github-light one-dark-pro vp-code"><code><span class="line"><span>    size_t rows = args -&gt; height / args -&gt; numThreads;          // 确定要计算的行数</span></span>
+<span class="line"><span>    if (args -&gt; height % args -&gt; numThreads) {                  // 如果该遇到整除要加一行避免遗漏</span></span>
+<span class="line"><span>        rows++;</span></span>
+<span class="line"><span>    }</span></span>
+<span class="line"><span>    size_t startRow = args -&gt; threadId * rows;                  // 确定开始行</span></span>
+<span class="line"><span>    // 如果已经到最后部分不够切分, 直接处理最后部分</span></span>
+<span class="line"><span>    rows = rows &gt; args -&gt; height - startRow ? args -&gt; height - startRow : rows;</span></span>
+<span class="line"><span>    // 调用mandelbrotSerial</span></span>
+<span class="line"><span>    mandelbrotSerial(args -&gt; x0, args -&gt; y0, args -&gt; x1, args -&gt; y1, args -&gt; width, </span></span>
+<span class="line"><span>                    args -&gt; height, startRow, rows, args -&gt; maxIterations, args -&gt; output);</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>]]></content>
     <category term="CS149_Lab"/>
     <published>2024-09-16T00:00:00.000Z</published>
   </entry>
