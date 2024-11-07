@@ -6,13 +6,11 @@
     <link>https://newzone.top/</link>
     <description>算法学习, 计算机公开课博客分享平台。</description>
     <language>zh-CN</language>
-    <pubDate>Wed, 06 Nov 2024 11:22:01 GMT</pubDate>
-    <lastBuildDate>Wed, 06 Nov 2024 11:22:01 GMT</lastBuildDate>
+    <pubDate>Thu, 07 Nov 2024 01:34:36 GMT</pubDate>
+    <lastBuildDate>Thu, 07 Nov 2024 01:34:36 GMT</lastBuildDate>
     <generator>@vuepress/plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <category>SOSD</category>
-    <category>CMC</category>
-    <category>最优化导论</category>
     <category>CS149_Lab</category>
     <category>数据结构与算法</category>
     <category>CS149</category>
@@ -462,35 +460,6 @@ BF16:1位符号位，8位指数位，7位尾数位</p>
 <h3>考虑流水线并行</h3>
 <p>流水线并行技术将一个模型（Transformer）中的不同层发放到多块GPU上，将原本一个batch的数据分解为多个更小的micro batch，通过编排forward pass和backward pass可以来获取不同的性能。<br>
 为了确保optimizer semantics（也就是端到端的计算能够正确的完成），不同GPU之间需要进行定期同步</p>
-]]></content:encoded>
-    </item>
-    <item>
-      <title>CMC_15 初赛非数A记录</title>
-      <link>https://newzone.top/posts/%E5%A4%A7%E6%95%B0_15A.html</link>
-      <guid>https://newzone.top/posts/%E5%A4%A7%E6%95%B0_15A.html</guid>
-      <source url="https://newzone.top/rss.xml">CMC_15 初赛非数A记录</source>
-      <description>填空题 4 幂级数$ \sum_{n = 1}^{\infty}\frac{(-1)^{n-1}x^{2n}}{n(2n-1)} $ 的收敛域为_____ alt text 5 设曲面Σ是平面z+y=5被柱面x2+y2=25截得的部分，</description>
-      <category>CMC</category>
-      <pubDate>Thu, 03 Oct 2024 00:00:00 GMT</pubDate>
-      <content:encoded><![CDATA[<h2>填空题</h2>
-<h3>4</h3>
-<p>幂级数$ \sum_{n = 1}^{\infty}\frac{(-1)^{n-1}x^{2n}}{n(2n-1)} $ 的收敛域为_____</p>
-<p></p>
-<h3>5</h3>
-<p>设曲面<span v-pre="" class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Σ</mi></mrow><annotation encoding="application/x-tex">\Sigma</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">Σ</span></span></span></span>是平面<span v-pre="" class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>+</mo><mi>y</mi><mo>=</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">z+y=5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">5</span></span></span></span>被柱面<span v-pre="" class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup><mo>=</mo><mn>25</mn></mrow><annotation encoding="application/x-tex">x^{2}+y^{2}=25</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8974em;vertical-align:-0.0833em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.0085em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">25</span></span></span></span>截得的部分，</p>
-]]></content:encoded>
-    </item>
-    <item>
-      <title>最优化导论</title>
-      <link>https://newzone.top/posts/%E6%9C%80%E4%BC%98%E5%8C%96%E5%AF%BC%E8%AE%BA.html</link>
-      <guid>https://newzone.top/posts/%E6%9C%80%E4%BC%98%E5%8C%96%E5%AF%BC%E8%AE%BA.html</guid>
-      <source url="https://newzone.top/rss.xml">最优化导论</source>
-      <description>数学知识回顾 有关几何概念 线段</description>
-      <category>最优化导论</category>
-      <pubDate>Thu, 03 Oct 2024 00:00:00 GMT</pubDate>
-      <content:encoded><![CDATA[<h2>数学知识回顾</h2>
-<h3>有关几何概念</h3>
-<h4>线段</h4>
 ]]></content:encoded>
     </item>
     <item>
