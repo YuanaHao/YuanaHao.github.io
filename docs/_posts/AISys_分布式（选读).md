@@ -267,6 +267,189 @@ DFA相较HF每一个`FlashAttention`+`FFN`约能够减少一个FA的计算量。
 
 #### TP
 
+```mermaid
+sequenceDiagram
+    %% 定义参与者
+    participant CPU as 主机 CPU
+    participant P0 as GPU 0
+    participant P1 as GPU 1
+    participant P2 as GPU 2
+    participant P3 as GPU 3
+
+    %% 初始化阶段
+    note over CPU,P3: 初始化阶段
+    rect rgba(235, 235, 235, 0.5)
+        CPU->>P0: 加载并分割模型参数
+        CPU->>P1: 加载并分割模型参数
+        CPU->>P2: 加载并分割模型参数
+        CPU->>P3: 加载并分割模型参数
+        P0->>P0: 初始化本地张量部分
+        P1->>P1: 初始化本地张量部分
+        P2->>P2: 初始化本地张量部分
+        P3->>P3: 初始化本地张量部分
+    end
+
+    %% 前向传播阶段
+    note over CPU,P3: 前向传播阶段
+    rect rgba(215, 235, 255, 0.5)
+        P0->>P1: 发送激活值 (All-Gather)
+        P1->>P2: 发送激活值 (All-Gather)
+        P2->>P3: 发送激活值 (All-Gather)
+        P3->>P0: 发送激活值 (All-Gather)
+        par
+            P0->>P0: 计算本地张量部分
+            and
+            P1->>P1: 计算本地张量部分
+            and
+            P2->>P2: 计算本地张量部分
+            and
+            P3->>P3: 计算本地张量部分
+        end
+        P0->>CPU: 存储中间结果
+        P1->>CPU: 存储中间结果
+        P2->>CPU: 存储中间结果
+        P3->>CPU: 存储中间结果
+    end
+
+    %% 反向传播阶段
+    note over CPU,P3: 反向传播阶段
+    rect rgba(235, 215, 235, 0.5)
+        P0->>P1: 发送梯度 (All-Reduce)
+        P1->>P2: 发送梯度 (All-Reduce)
+        P2->>P3: 发送梯度 (All-Reduce)
+        P3->>P0: 发送梯度 (All-Reduce)
+        par
+            P0->>P0: 计算本地梯度
+            and
+            P1->>P1: 计算本地梯度
+            and
+            P2->>P2: 计算本地梯度
+            and
+            P3->>P3: 计算本地梯度
+        end
+        P0->>CPU: 存储梯度
+        P1->>CPU: 存储梯度
+        P2->>CPU: 存储梯度
+        P3->>CPU: 存储梯度
+    end
+
+    %% 参数更新阶段
+    note over CPU,P3: 参数更新阶段
+    rect rgba(215, 255, 215, 0.5)
+        par
+            P0->>P0: 更新本地参数
+            and
+            P1->>P1: 更新本地参数
+            and
+            P2->>P2: 更新本地参数
+            and
+            P3->>P3: 更新本地参数
+        end
+        P0->>CPU: 同步更新后的参数
+        P1->>CPU: 同步更新后的参数
+        P2->>CPU: 同步更新后的参数
+        P3->>CPU: 同步更新后的参数
+    end
+```
+
 #### DP
 
+```mermaid
+sequenceDiagram
+    participant Server
+    participant Worker1
+    participant Worker2
+
+    Server->>Worker1: 分发第k-1个batch数据
+    Server->>Worker2: 分发第k-1个batch数据
+    Worker1->>Worker1: 第k-1个batch FWD
+    Worker2->>Worker2: 第k-1个batch FWD
+    Worker1->>Worker1: 第k-1个batch BWD
+    Worker2->>Worker2: 第k-1个batch BWD
+    Worker1-->>Server: 返回第k-1个batch梯度
+    Worker2-->>Server: 返回第k-1个batch梯度
+    Server->>Server: 第k-1个batch AllReduce操作
+    Server->>Server: 更新第k-1个batch参数
+
+    Server->>Worker1: 分发第k个batch数据
+    Server->>Worker2: 分发第k个batch数据
+    Worker1->>Worker1: 第k个batch FWD
+    Worker2->>Worker2: 第k个batch FWD
+    Worker1->>Worker1: 第k个batch BWD
+    Worker2->>Worker2: 第k个batch BWD
+    Worker1-->>Server: 返回第k个batch梯度
+    Worker2-->>Server: 返回第k个batch梯度
+    Server->>Server: 第k个batch AllReduce操作
+    Server->>Server: 更新第k个batch参数
+
+    Server->>Worker1: 分发第k+1个batch数据
+    Server->>Worker2: 分发第k+1个batch数据
+    Worker1->>Worker1: 第k+1个batch FWD
+    Worker2->>Worker2: 第k+1个batch FWD
+    Worker1->>Worker1: 第k+1个batch BWD
+    Worker2->>Worker2: 第k+1个batch BWD
+    Worker1-->>Server: 返回第k+1个batch梯度
+    Worker2-->>Server: 返回第k+1个batch梯度
+    Server->>Server: 第k+1个batch AllReduce操作
+    Server->>Server: 更新第k+1个batch参数
+```
+
+
 #### PP
+
+```mermaid
+sequenceDiagram
+    participant Client
+    participant Splitter
+    participant Stage1
+    participant Stage2
+    participant Stage3
+    participant Aggregator
+
+    Client->>Splitter: 分割为微批次
+
+    %% 微批次1 前向传播
+    Splitter->>Stage1: 微批次1 FWD
+    activate Stage1
+    Stage1->>Stage2: 微批次1 FWD
+    activate Stage2
+    Stage2->>Stage3: 微批次1 FWD
+    activate Stage3
+
+    %% 微批次2 前向传播（稍后开始）
+    Splitter->>Stage1: 微批次2 FWD
+    Stage1->>Stage2: 微批次2 FWD
+    Stage2->>Stage3: 微批次2 FWD
+
+    %% 微批次1 反向传播
+    Stage3-->>Stage2: 微批次1 BWD
+    deactivate Stage3
+    Stage2-->>Stage1: 微批次1 BWD
+    deactivate Stage2
+    Stage1->>Aggregator: 微批次1 梯度
+    deactivate Stage1
+
+    %% 微批次3 前向传播（再次稍后开始）
+    Splitter->>Stage1: 微批次3 FWD
+    activate Stage1
+    Stage1->>Stage2: 微批次3 FWD
+    activate Stage2
+    Stage2->>Stage3: 微批次3 FWD
+    activate Stage3
+
+    %% 微批次2 反向传播
+    Stage3-->>Stage2: 微批次2 BWD
+    Stage2-->>Stage1: 微批次2 BWD
+    Stage1->>Aggregator: 微批次2 梯度
+
+    %% 微批次3 反向传播
+    Stage3-->>Stage2: 微批次3 BWD
+    deactivate Stage3
+    Stage2-->>Stage1: 微批次3 BWD
+    deactivate Stage2
+    Stage1->>Aggregator: 微批次3 梯度
+    deactivate Stage1
+
+    Aggregator-->>Client: 汇总训练结果
+
+```

@@ -1,6 +1,7 @@
 import { hopeTheme } from "vuepress-theme-hope";
 import navbar from "./navbar.js";
 import sidebar from "./sidebar.js";
+import { mdEnhancePlugin } from "vuepress-plugin-md-enhance";
 
 export default hopeTheme({
   // 主题选项：https://theme-hope.vuejs.press/zh/config/theme/layout.html
@@ -159,6 +160,7 @@ export default hopeTheme({
       align: true, // 启用自定义对齐
       // codetabs: true, // 代码块分组
       demo: true, //代码演示
+      mermaid: true,
     },
 
     // Algolia 全文搜索：需要自己设置爬虫并生成下方配置，如不会自己设置，启用下方本地搜索
@@ -187,4 +189,6 @@ export default hopeTheme({
 
   // 开发模式下是否启动热更新，显示所有更改并重新渲染
   hotReload: true,
+
 });
+
