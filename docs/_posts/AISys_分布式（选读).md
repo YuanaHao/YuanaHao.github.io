@@ -267,8 +267,8 @@ DFA相较HF每一个`FlashAttention`+`FFN`约能够减少一个FA的计算量。
 
 #### TP
 
-```mermaid
-sequenceDiagram
+```sequenceDiagram
+
     %% 定义参与者
     participant CPU as 主机 CPU
     participant P0 as GPU 0
@@ -350,12 +350,13 @@ sequenceDiagram
         P2->>CPU: 同步更新后的参数
         P3->>CPU: 同步更新后的参数
     end
+
 ```
 
 #### DP
 
-```mermaid
-sequenceDiagram
+```sequenceDiagram
+
     participant Server
     participant Worker1
     participant Worker2
@@ -392,13 +393,14 @@ sequenceDiagram
     Worker2-->>Server: 返回第k+1个batch梯度
     Server->>Server: 第k+1个batch AllReduce操作
     Server->>Server: 更新第k+1个batch参数
+
 ```
 
 
 #### PP
 
-```mermaid
-sequenceDiagram
+```sequenceDiagram
+
     participant Client
     participant Splitter
     participant Stage1
