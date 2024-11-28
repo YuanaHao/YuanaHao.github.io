@@ -6,8 +6,8 @@
     <link>https://newzone.top/</link>
     <description>算法学习, 计算机公开课博客分享平台。</description>
     <language>zh-CN</language>
-    <pubDate>Thu, 28 Nov 2024 10:27:43 GMT</pubDate>
-    <lastBuildDate>Thu, 28 Nov 2024 10:27:43 GMT</lastBuildDate>
+    <pubDate>Thu, 28 Nov 2024 10:38:09 GMT</pubDate>
+    <lastBuildDate>Thu, 28 Nov 2024 10:38:09 GMT</lastBuildDate>
     <generator>@vuepress/plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <category>SOSD</category>
@@ -671,181 +671,178 @@ M834 80h400000v40h-400000z"></path></svg></span></span></span><span class="vlist
 <code>FlashAttention</code>部分的梯度更新为<span v-pre="" class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mi>Q</mi><mi>V</mi></mrow><annotation encoding="application/x-tex">K Q V</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">K</span><span class="mord mathnormal">Q</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span></span></span></span>三个矩阵，可以通过FA的输出结果完成更新，因此保存FA的结果便可计算三者的矩阵。</p>
 <h3>典型并行方式时序图</h3>
 <h4>TP</h4>
-<div class="language-sequencediagram line-numbers-mode" data-highlighter="shiki" data-ext="sequencediagram" data-title="sequencediagram" style="--shiki-light:#24292e;--shiki-dark:#abb2bf;--shiki-light-bg:#fff;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes github-light one-dark-pro vp-code"><code><span class="line"><span></span></span>
-<span class="line"><span>    %% 定义参与者</span></span>
-<span class="line"><span>    participant CPU as 主机 CPU</span></span>
-<span class="line"><span>    participant P0 as GPU 0</span></span>
-<span class="line"><span>    participant P1 as GPU 1</span></span>
-<span class="line"><span>    participant P2 as GPU 2</span></span>
-<span class="line"><span>    participant P3 as GPU 3</span></span>
-<span class="line"><span></span></span>
-<span class="line"><span>    %% 初始化阶段</span></span>
-<span class="line"><span>    note over CPU,P3: 初始化阶段</span></span>
-<span class="line"><span>    rect rgba(235, 235, 235, 0.5)</span></span>
-<span class="line"><span>        CPU-&gt;&gt;P0: 加载并分割模型参数</span></span>
-<span class="line"><span>        CPU-&gt;&gt;P1: 加载并分割模型参数</span></span>
-<span class="line"><span>        CPU-&gt;&gt;P2: 加载并分割模型参数</span></span>
-<span class="line"><span>        CPU-&gt;&gt;P3: 加载并分割模型参数</span></span>
-<span class="line"><span>        P0-&gt;&gt;P0: 初始化本地张量部分</span></span>
-<span class="line"><span>        P1-&gt;&gt;P1: 初始化本地张量部分</span></span>
-<span class="line"><span>        P2-&gt;&gt;P2: 初始化本地张量部分</span></span>
-<span class="line"><span>        P3-&gt;&gt;P3: 初始化本地张量部分</span></span>
-<span class="line"><span>    end</span></span>
-<span class="line"><span></span></span>
-<span class="line"><span>    %% 前向传播阶段</span></span>
-<span class="line"><span>    note over CPU,P3: 前向传播阶段</span></span>
-<span class="line"><span>    rect rgba(215, 235, 255, 0.5)</span></span>
-<span class="line"><span>        P0-&gt;&gt;P1: 发送激活值 (All-Gather)</span></span>
-<span class="line"><span>        P1-&gt;&gt;P2: 发送激活值 (All-Gather)</span></span>
-<span class="line"><span>        P2-&gt;&gt;P3: 发送激活值 (All-Gather)</span></span>
-<span class="line"><span>        P3-&gt;&gt;P0: 发送激活值 (All-Gather)</span></span>
-<span class="line"><span>        par</span></span>
-<span class="line"><span>            P0-&gt;&gt;P0: 计算本地张量部分</span></span>
-<span class="line"><span>            and</span></span>
-<span class="line"><span>            P1-&gt;&gt;P1: 计算本地张量部分</span></span>
-<span class="line"><span>            and</span></span>
-<span class="line"><span>            P2-&gt;&gt;P2: 计算本地张量部分</span></span>
-<span class="line"><span>            and</span></span>
-<span class="line"><span>            P3-&gt;&gt;P3: 计算本地张量部分</span></span>
-<span class="line"><span>        end</span></span>
-<span class="line"><span>        P0-&gt;&gt;CPU: 存储中间结果</span></span>
-<span class="line"><span>        P1-&gt;&gt;CPU: 存储中间结果</span></span>
-<span class="line"><span>        P2-&gt;&gt;CPU: 存储中间结果</span></span>
-<span class="line"><span>        P3-&gt;&gt;CPU: 存储中间结果</span></span>
-<span class="line"><span>    end</span></span>
-<span class="line"><span></span></span>
-<span class="line"><span>    %% 反向传播阶段</span></span>
-<span class="line"><span>    note over CPU,P3: 反向传播阶段</span></span>
-<span class="line"><span>    rect rgba(235, 215, 235, 0.5)</span></span>
-<span class="line"><span>        P0-&gt;&gt;P1: 发送梯度 (All-Reduce)</span></span>
-<span class="line"><span>        P1-&gt;&gt;P2: 发送梯度 (All-Reduce)</span></span>
-<span class="line"><span>        P2-&gt;&gt;P3: 发送梯度 (All-Reduce)</span></span>
-<span class="line"><span>        P3-&gt;&gt;P0: 发送梯度 (All-Reduce)</span></span>
-<span class="line"><span>        par</span></span>
-<span class="line"><span>            P0-&gt;&gt;P0: 计算本地梯度</span></span>
-<span class="line"><span>            and</span></span>
-<span class="line"><span>            P1-&gt;&gt;P1: 计算本地梯度</span></span>
-<span class="line"><span>            and</span></span>
-<span class="line"><span>            P2-&gt;&gt;P2: 计算本地梯度</span></span>
-<span class="line"><span>            and</span></span>
-<span class="line"><span>            P3-&gt;&gt;P3: 计算本地梯度</span></span>
-<span class="line"><span>        end</span></span>
-<span class="line"><span>        P0-&gt;&gt;CPU: 存储梯度</span></span>
-<span class="line"><span>        P1-&gt;&gt;CPU: 存储梯度</span></span>
-<span class="line"><span>        P2-&gt;&gt;CPU: 存储梯度</span></span>
-<span class="line"><span>        P3-&gt;&gt;CPU: 存储梯度</span></span>
-<span class="line"><span>    end</span></span>
-<span class="line"><span></span></span>
-<span class="line"><span>    %% 参数更新阶段</span></span>
-<span class="line"><span>    note over CPU,P3: 参数更新阶段</span></span>
-<span class="line"><span>    rect rgba(215, 255, 215, 0.5)</span></span>
-<span class="line"><span>        par</span></span>
-<span class="line"><span>            P0-&gt;&gt;P0: 更新本地参数</span></span>
-<span class="line"><span>            and</span></span>
-<span class="line"><span>            P1-&gt;&gt;P1: 更新本地参数</span></span>
-<span class="line"><span>            and</span></span>
-<span class="line"><span>            P2-&gt;&gt;P2: 更新本地参数</span></span>
-<span class="line"><span>            and</span></span>
-<span class="line"><span>            P3-&gt;&gt;P3: 更新本地参数</span></span>
-<span class="line"><span>        end</span></span>
-<span class="line"><span>        P0-&gt;&gt;CPU: 同步更新后的参数</span></span>
-<span class="line"><span>        P1-&gt;&gt;CPU: 同步更新后的参数</span></span>
-<span class="line"><span>        P2-&gt;&gt;CPU: 同步更新后的参数</span></span>
-<span class="line"><span>        P3-&gt;&gt;CPU: 同步更新后的参数</span></span>
-<span class="line"><span>    end</span></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h4>DP</h4>
-<div class="language-sequencediagram line-numbers-mode" data-highlighter="shiki" data-ext="sequencediagram" data-title="sequencediagram" style="--shiki-light:#24292e;--shiki-dark:#abb2bf;--shiki-light-bg:#fff;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes github-light one-dark-pro vp-code"><code><span class="line"><span></span></span>
-<span class="line"><span>    participant Server</span></span>
-<span class="line"><span>    participant Worker1</span></span>
-<span class="line"><span>    participant Worker2</span></span>
-<span class="line"><span></span></span>
-<span class="line"><span>    Server-&gt;&gt;Worker1: 分发第k-1个batch数据</span></span>
-<span class="line"><span>    Server-&gt;&gt;Worker2: 分发第k-1个batch数据</span></span>
-<span class="line"><span>    Worker1-&gt;&gt;Worker1: 第k-1个batch FWD</span></span>
-<span class="line"><span>    Worker2-&gt;&gt;Worker2: 第k-1个batch FWD</span></span>
-<span class="line"><span>    Worker1-&gt;&gt;Worker1: 第k-1个batch BWD</span></span>
-<span class="line"><span>    Worker2-&gt;&gt;Worker2: 第k-1个batch BWD</span></span>
-<span class="line"><span>    Worker1--&gt;&gt;Server: 返回第k-1个batch梯度</span></span>
-<span class="line"><span>    Worker2--&gt;&gt;Server: 返回第k-1个batch梯度</span></span>
-<span class="line"><span>    Server-&gt;&gt;Server: 第k-1个batch AllReduce操作</span></span>
-<span class="line"><span>    Server-&gt;&gt;Server: 更新第k-1个batch参数</span></span>
-<span class="line"><span></span></span>
-<span class="line"><span>    Server-&gt;&gt;Worker1: 分发第k个batch数据</span></span>
-<span class="line"><span>    Server-&gt;&gt;Worker2: 分发第k个batch数据</span></span>
-<span class="line"><span>    Worker1-&gt;&gt;Worker1: 第k个batch FWD</span></span>
-<span class="line"><span>    Worker2-&gt;&gt;Worker2: 第k个batch FWD</span></span>
-<span class="line"><span>    Worker1-&gt;&gt;Worker1: 第k个batch BWD</span></span>
-<span class="line"><span>    Worker2-&gt;&gt;Worker2: 第k个batch BWD</span></span>
-<span class="line"><span>    Worker1--&gt;&gt;Server: 返回第k个batch梯度</span></span>
-<span class="line"><span>    Worker2--&gt;&gt;Server: 返回第k个batch梯度</span></span>
-<span class="line"><span>    Server-&gt;&gt;Server: 第k个batch AllReduce操作</span></span>
-<span class="line"><span>    Server-&gt;&gt;Server: 更新第k个batch参数</span></span>
-<span class="line"><span></span></span>
-<span class="line"><span>    Server-&gt;&gt;Worker1: 分发第k+1个batch数据</span></span>
-<span class="line"><span>    Server-&gt;&gt;Worker2: 分发第k+1个batch数据</span></span>
-<span class="line"><span>    Worker1-&gt;&gt;Worker1: 第k+1个batch FWD</span></span>
-<span class="line"><span>    Worker2-&gt;&gt;Worker2: 第k+1个batch FWD</span></span>
-<span class="line"><span>    Worker1-&gt;&gt;Worker1: 第k+1个batch BWD</span></span>
-<span class="line"><span>    Worker2-&gt;&gt;Worker2: 第k+1个batch BWD</span></span>
-<span class="line"><span>    Worker1--&gt;&gt;Server: 返回第k+1个batch梯度</span></span>
-<span class="line"><span>    Worker2--&gt;&gt;Server: 返回第k+1个batch梯度</span></span>
-<span class="line"><span>    Server-&gt;&gt;Server: 第k+1个batch AllReduce操作</span></span>
-<span class="line"><span>    Server-&gt;&gt;Server: 更新第k+1个batch参数</span></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h4>PP</h4>
-<div class="language-sequencediagram line-numbers-mode" data-highlighter="shiki" data-ext="sequencediagram" data-title="sequencediagram" style="--shiki-light:#24292e;--shiki-dark:#abb2bf;--shiki-light-bg:#fff;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes github-light one-dark-pro vp-code"><code><span class="line"><span></span></span>
-<span class="line"><span>    participant Client</span></span>
-<span class="line"><span>    participant Splitter</span></span>
-<span class="line"><span>    participant Stage1</span></span>
-<span class="line"><span>    participant Stage2</span></span>
-<span class="line"><span>    participant Stage3</span></span>
-<span class="line"><span>    participant Aggregator</span></span>
-<span class="line"><span></span></span>
-<span class="line"><span>    Client-&gt;&gt;Splitter: 分割为微批次</span></span>
-<span class="line"><span></span></span>
-<span class="line"><span>    %% 微批次1 前向传播</span></span>
-<span class="line"><span>    Splitter-&gt;&gt;Stage1: 微批次1 FWD</span></span>
-<span class="line"><span>    activate Stage1</span></span>
-<span class="line"><span>    Stage1-&gt;&gt;Stage2: 微批次1 FWD</span></span>
-<span class="line"><span>    activate Stage2</span></span>
-<span class="line"><span>    Stage2-&gt;&gt;Stage3: 微批次1 FWD</span></span>
-<span class="line"><span>    activate Stage3</span></span>
-<span class="line"><span></span></span>
-<span class="line"><span>    %% 微批次2 前向传播（稍后开始）</span></span>
-<span class="line"><span>    Splitter-&gt;&gt;Stage1: 微批次2 FWD</span></span>
-<span class="line"><span>    Stage1-&gt;&gt;Stage2: 微批次2 FWD</span></span>
-<span class="line"><span>    Stage2-&gt;&gt;Stage3: 微批次2 FWD</span></span>
-<span class="line"><span></span></span>
-<span class="line"><span>    %% 微批次1 反向传播</span></span>
-<span class="line"><span>    Stage3--&gt;&gt;Stage2: 微批次1 BWD</span></span>
-<span class="line"><span>    deactivate Stage3</span></span>
-<span class="line"><span>    Stage2--&gt;&gt;Stage1: 微批次1 BWD</span></span>
-<span class="line"><span>    deactivate Stage2</span></span>
-<span class="line"><span>    Stage1-&gt;&gt;Aggregator: 微批次1 梯度</span></span>
-<span class="line"><span>    deactivate Stage1</span></span>
-<span class="line"><span></span></span>
-<span class="line"><span>    %% 微批次3 前向传播（再次稍后开始）</span></span>
-<span class="line"><span>    Splitter-&gt;&gt;Stage1: 微批次3 FWD</span></span>
-<span class="line"><span>    activate Stage1</span></span>
-<span class="line"><span>    Stage1-&gt;&gt;Stage2: 微批次3 FWD</span></span>
-<span class="line"><span>    activate Stage2</span></span>
-<span class="line"><span>    Stage2-&gt;&gt;Stage3: 微批次3 FWD</span></span>
-<span class="line"><span>    activate Stage3</span></span>
-<span class="line"><span></span></span>
-<span class="line"><span>    %% 微批次2 反向传播</span></span>
-<span class="line"><span>    Stage3--&gt;&gt;Stage2: 微批次2 BWD</span></span>
-<span class="line"><span>    Stage2--&gt;&gt;Stage1: 微批次2 BWD</span></span>
-<span class="line"><span>    Stage1-&gt;&gt;Aggregator: 微批次2 梯度</span></span>
-<span class="line"><span></span></span>
-<span class="line"><span>    %% 微批次3 反向传播</span></span>
-<span class="line"><span>    Stage3--&gt;&gt;Stage2: 微批次3 BWD</span></span>
-<span class="line"><span>    deactivate Stage3</span></span>
-<span class="line"><span>    Stage2--&gt;&gt;Stage1: 微批次3 BWD</span></span>
-<span class="line"><span>    deactivate Stage2</span></span>
-<span class="line"><span>    Stage1-&gt;&gt;Aggregator: 微批次3 梯度</span></span>
-<span class="line"><span>    deactivate Stage1</span></span>
-<span class="line"><span></span></span>
-<span class="line"><span>    Aggregator--&gt;&gt;Client: 汇总训练结果</span></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>]]></content:encoded>
+<div class="language-mermaid line-numbers-mode" data-highlighter="shiki" data-ext="mermaid" data-title="mermaid" style="--shiki-light:#24292e;--shiki-dark:#abb2bf;--shiki-light-bg:#fff;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes github-light one-dark-pro vp-code"><code><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    %% 定义参与者</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    participant CPU as 主机 CPU</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    participant P0 as GPU 0</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    participant P1 as GPU 1</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    participant P2 as GPU 2</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    participant P3 as GPU 3</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    %% 初始化阶段</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    note over CPU,P3: 初始化阶段</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    rect rgba(235, 235, 235, 0.5)</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">        CPU-&gt;&gt;P0: 加载并分割模型参数</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">        CPU-&gt;&gt;P1: 加载并分割模型参数</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">        CPU-&gt;&gt;P2: 加载并分割模型参数</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">        CPU-&gt;&gt;P3: 加载并分割模型参数</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">        P0-&gt;&gt;P0: 初始化本地张量部分</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">        P1-&gt;&gt;P1: 初始化本地张量部分</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">        P2-&gt;&gt;P2: 初始化本地张量部分</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">        P3-&gt;&gt;P3: 初始化本地张量部分</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    end</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    %% 前向传播阶段</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    note over CPU,P3: 前向传播阶段</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    rect rgba(215, 235, 255, 0.5)</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">        P0-&gt;&gt;P1: 发送激活值 (All-Gather)</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">        P1-&gt;&gt;P2: 发送激活值 (All-Gather)</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">        P2-&gt;&gt;P3: 发送激活值 (All-Gather)</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">        P3-&gt;&gt;P0: 发送激活值 (All-Gather)</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">        par</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">            P0-&gt;&gt;P0: 计算本地张量部分</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">            and</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">            P1-&gt;&gt;P1: 计算本地张量部分</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">            and</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">            P2-&gt;&gt;P2: 计算本地张量部分</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">            and</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">            P3-&gt;&gt;P3: 计算本地张量部分</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">        end</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">        P0-&gt;&gt;CPU: 存储中间结果</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">        P1-&gt;&gt;CPU: 存储中间结果</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">        P2-&gt;&gt;CPU: 存储中间结果</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">        P3-&gt;&gt;CPU: 存储中间结果</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    end</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    %% 反向传播阶段</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    note over CPU,P3: 反向传播阶段</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    rect rgba(235, 215, 235, 0.5)</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">        P0-&gt;&gt;P1: 发送梯度 (All-Reduce)</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">        P1-&gt;&gt;P2: 发送梯度 (All-Reduce)</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">        P2-&gt;&gt;P3: 发送梯度 (All-Reduce)</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">        P3-&gt;&gt;P0: 发送梯度 (All-Reduce)</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">        par</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">            P0-&gt;&gt;P0: 计算本地梯度</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">            and</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">            P1-&gt;&gt;P1: 计算本地梯度</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">            and</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">            P2-&gt;&gt;P2: 计算本地梯度</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">            and</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">            P3-&gt;&gt;P3: 计算本地梯度</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">        end</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">        P0-&gt;&gt;CPU: 存储梯度</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">        P1-&gt;&gt;CPU: 存储梯度</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">        P2-&gt;&gt;CPU: 存储梯度</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">        P3-&gt;&gt;CPU: 存储梯度</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    end</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    %% 参数更新阶段</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    note over CPU,P3: 参数更新阶段</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    rect rgba(215, 255, 215, 0.5)</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">        par</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">            P0-&gt;&gt;P0: 更新本地参数</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">            and</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">            P1-&gt;&gt;P1: 更新本地参数</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">            and</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">            P2-&gt;&gt;P2: 更新本地参数</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">            and</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">            P3-&gt;&gt;P3: 更新本地参数</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">        end</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">        P0-&gt;&gt;CPU: 同步更新后的参数</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">        P1-&gt;&gt;CPU: 同步更新后的参数</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">        P2-&gt;&gt;CPU: 同步更新后的参数</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">        P3-&gt;&gt;CPU: 同步更新后的参数</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    end</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h4>DP</h4>
+<div class="language-mermaid line-numbers-mode" data-highlighter="shiki" data-ext="mermaid" data-title="mermaid" style="--shiki-light:#24292e;--shiki-dark:#abb2bf;--shiki-light-bg:#fff;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes github-light one-dark-pro vp-code"><code><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    participant Server</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    participant Worker1</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    participant Worker2</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    Server-&gt;&gt;Worker1: 分发第k-1个batch数据</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    Server-&gt;&gt;Worker2: 分发第k-1个batch数据</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    Worker1-&gt;&gt;Worker1: 第k-1个batch FWD</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    Worker2-&gt;&gt;Worker2: 第k-1个batch FWD</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    Worker1-&gt;&gt;Worker1: 第k-1个batch BWD</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    Worker2-&gt;&gt;Worker2: 第k-1个batch BWD</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    Worker1--&gt;&gt;Server: 返回第k-1个batch梯度</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    Worker2--&gt;&gt;Server: 返回第k-1个batch梯度</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    Server-&gt;&gt;Server: 第k-1个batch AllReduce操作</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    Server-&gt;&gt;Server: 更新第k-1个batch参数</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    Server-&gt;&gt;Worker1: 分发第k个batch数据</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    Server-&gt;&gt;Worker2: 分发第k个batch数据</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    Worker1-&gt;&gt;Worker1: 第k个batch FWD</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    Worker2-&gt;&gt;Worker2: 第k个batch FWD</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    Worker1-&gt;&gt;Worker1: 第k个batch BWD</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    Worker2-&gt;&gt;Worker2: 第k个batch BWD</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    Worker1--&gt;&gt;Server: 返回第k个batch梯度</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    Worker2--&gt;&gt;Server: 返回第k个batch梯度</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    Server-&gt;&gt;Server: 第k个batch AllReduce操作</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    Server-&gt;&gt;Server: 更新第k个batch参数</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    Server-&gt;&gt;Worker1: 分发第k+1个batch数据</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    Server-&gt;&gt;Worker2: 分发第k+1个batch数据</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    Worker1-&gt;&gt;Worker1: 第k+1个batch FWD</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    Worker2-&gt;&gt;Worker2: 第k+1个batch FWD</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    Worker1-&gt;&gt;Worker1: 第k+1个batch BWD</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    Worker2-&gt;&gt;Worker2: 第k+1个batch BWD</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    Worker1--&gt;&gt;Server: 返回第k+1个batch梯度</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    Worker2--&gt;&gt;Server: 返回第k+1个batch梯度</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    Server-&gt;&gt;Server: 第k+1个batch AllReduce操作</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    Server-&gt;&gt;Server: 更新第k+1个batch参数</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h4>PP</h4>
+<div class="language-mermaid line-numbers-mode" data-highlighter="shiki" data-ext="mermaid" data-title="mermaid" style="--shiki-light:#24292e;--shiki-dark:#abb2bf;--shiki-light-bg:#fff;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes github-light one-dark-pro vp-code"><code><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    participant Client</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    participant Splitter</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    participant Stage1</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    participant Stage2</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    participant Stage3</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    participant Aggregator</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    Client-&gt;&gt;Splitter: 分割为微批次</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    %% 微批次1 前向传播</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    Splitter-&gt;&gt;Stage1: 微批次1 FWD</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    activate Stage1</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    Stage1-&gt;&gt;Stage2: 微批次1 FWD</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    activate Stage2</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    Stage2-&gt;&gt;Stage3: 微批次1 FWD</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    activate Stage3</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    %% 微批次2 前向传播（稍后开始）</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    Splitter-&gt;&gt;Stage1: 微批次2 FWD</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    Stage1-&gt;&gt;Stage2: 微批次2 FWD</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    Stage2-&gt;&gt;Stage3: 微批次2 FWD</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    %% 微批次1 反向传播</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    Stage3--&gt;&gt;Stage2: 微批次1 BWD</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    deactivate Stage3</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    Stage2--&gt;&gt;Stage1: 微批次1 BWD</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    deactivate Stage2</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    Stage1-&gt;&gt;Aggregator: 微批次1 梯度</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    deactivate Stage1</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    %% 微批次3 前向传播（再次稍后开始）</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    Splitter-&gt;&gt;Stage1: 微批次3 FWD</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    activate Stage1</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    Stage1-&gt;&gt;Stage2: 微批次3 FWD</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    activate Stage2</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    Stage2-&gt;&gt;Stage3: 微批次3 FWD</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    activate Stage3</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    %% 微批次2 反向传播</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    Stage3--&gt;&gt;Stage2: 微批次2 BWD</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    Stage2--&gt;&gt;Stage1: 微批次2 BWD</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    Stage1-&gt;&gt;Aggregator: 微批次2 梯度</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    %% 微批次3 反向传播</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    Stage3--&gt;&gt;Stage2: 微批次3 BWD</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    deactivate Stage3</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    Stage2--&gt;&gt;Stage1: 微批次3 BWD</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    deactivate Stage2</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    Stage1-&gt;&gt;Aggregator: 微批次3 梯度</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    deactivate Stage1</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    Aggregator--&gt;&gt;Client: 汇总训练结果</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>]]></content:encoded>
     </item>
     <item>
       <title>CS149 Lab Assignment1</title>
