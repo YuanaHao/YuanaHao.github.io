@@ -268,6 +268,7 @@ DFA相较HF每一个`FlashAttention`+`FFN`约能够减少一个FA的计算量。
 #### TP
 
 ```mermaid
+sequenceDiagram
     %% 定义参与者
     participant CPU as 主机 CPU
     participant P0 as GPU 0
@@ -354,6 +355,7 @@ DFA相较HF每一个`FlashAttention`+`FFN`约能够减少一个FA的计算量。
 #### DP
 
 ```mermaid
+sequenceDiagram
     participant Server
     participant Worker1
     participant Worker2
@@ -396,6 +398,7 @@ DFA相较HF每一个`FlashAttention`+`FFN`约能够减少一个FA的计算量。
 #### PP
 
 ```mermaid
+sequenceDiagram
     participant Client
     participant Splitter
     participant Stage1
