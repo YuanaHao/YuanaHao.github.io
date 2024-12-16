@@ -6,23 +6,24 @@
     <link>https://newzone.top/</link>
     <description>算法学习, 计算机公开课博客分享平台。</description>
     <language>zh-CN</language>
-    <pubDate>Mon, 16 Dec 2024 12:56:07 GMT</pubDate>
-    <lastBuildDate>Mon, 16 Dec 2024 12:56:07 GMT</lastBuildDate>
+    <pubDate>Mon, 16 Dec 2024 13:35:36 GMT</pubDate>
+    <lastBuildDate>Mon, 16 Dec 2024 13:35:36 GMT</lastBuildDate>
     <generator>@vuepress/plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+    <category>ASC</category>
     <category>SOSD</category>
     <category>CS149_Lab</category>
     <category>数据结构与算法</category>
     <category>CS149</category>
     <item>
-      <title>report</title>
+      <title>ASC2025 TEST_0_CONCURRENCY</title>
       <link>https://newzone.top/posts/0_REPORT.html</link>
       <guid>https://newzone.top/posts/0_REPORT.html</guid>
-      <source url="https://newzone.top/rss.xml">report</source>
-      <description>report How to find the bugs in the program reference: https://nj.gitbooks.io/c/content/content/chapter10/chapter10-chinese.html parallel problem bugs unnecessary block dead lock...</description>
-      <pubDate>Mon, 16 Dec 2024 04:52:59 GMT</pubDate>
-      <content:encoded><![CDATA[
-<h2>How to find the bugs in the program</h2>
+      <source url="https://newzone.top/rss.xml">ASC2025 TEST_0_CONCURRENCY</source>
+      <description>How to find the bugs in the program reference: https://nj.gitbooks.io/c/content/content/chapter10/chapter10-chinese.html parallel problem bugs unnecessary block dead lock live l...</description>
+      <category>ASC</category>
+      <pubDate>Sun, 15 Dec 2024 00:00:00 GMT</pubDate>
+      <content:encoded><![CDATA[<h2>How to find the bugs in the program</h2>
 <blockquote>
 <p>reference: https://nj.gitbooks.io/c/content/content/chapter10/chapter10-chinese.html</p>
 </blockquote>
@@ -312,14 +313,14 @@
 <div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>]]></content:encoded>
     </item>
     <item>
-      <title>1.cluster</title>
+      <title>ASC2025 TEST_1_cluster</title>
       <link>https://newzone.top/posts/1_REPORT.html</link>
       <guid>https://newzone.top/posts/1_REPORT.html</guid>
-      <source url="https://newzone.top/rss.xml">1.cluster</source>
-      <description>1.cluster Installation it&amp;apos;s easy to finish the envirment settings, so I just talk about some issues occuered. step1: unzip the baseenv.tar.gz may the .tar.gz file be unziped to ...</description>
-      <pubDate>Mon, 16 Dec 2024 04:52:59 GMT</pubDate>
-      <content:encoded><![CDATA[
-<h2>Installation</h2>
+      <source url="https://newzone.top/rss.xml">ASC2025 TEST_1_cluster</source>
+      <description>Installation it&amp;apos;s easy to finish the envirment settings, so I just talk about some issues occuered. step1: unzip the baseenv.tar.gz may the .tar.gz file be unziped to many files...</description>
+      <category>ASC</category>
+      <pubDate>Sun, 15 Dec 2024 00:00:00 GMT</pubDate>
+      <content:encoded><![CDATA[<h2>Installation</h2>
 <p>it's easy to finish the envirment settings, so I just talk about some issues occuered.</p>
 <h3>step1: unzip the <code>baseenv.tar.gz</code></h3>
 <div class="language-bash line-numbers-mode" data-highlighter="shiki" data-ext="bash" data-title="bash" style="--shiki-light:#24292e;--shiki-dark:#abb2bf;--shiki-light-bg:#fff;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes github-light one-dark-pro vp-code"><code><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#61AFEF">tar</span><span style="--shiki-light:#005CC5;--shiki-dark:#D19A66"> -xvf</span><span style="--shiki-light:#032F62;--shiki-dark:#98C379"> baseenv.tar.gz</span></span></code></pre>

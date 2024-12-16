@@ -4,21 +4,21 @@
   <title>CS_Blog</title>
   <subtitle>算法学习, 计算机公开课博客分享平台。</subtitle>
   <icon>https://newzone.top/favicon.ico</icon>
-  <updated>2024-12-16T12:56:07.665Z</updated>
+  <updated>2024-12-16T13:35:36.222Z</updated>
   <generator>@vuepress/plugin-feed</generator>
   <link rel="self" href="https://newzone.top/atom.xml"/>
   <link rel="alternate" href="https://newzone.top/"/>
+  <category term="ASC"/>
   <category term="SOSD"/>
   <category term="CS149_Lab"/>
   <category term="数据结构与算法"/>
   <category term="CS149"/>
   <entry>
-    <title type="text">report</title>
+    <title type="text">ASC2025 TEST_0_CONCURRENCY</title>
     <id>https://newzone.top/posts/0_REPORT.html</id>
     <link href="https://newzone.top/posts/0_REPORT.html"/>
-    <updated>2024-12-16T04:52:59.000Z</updated>
-    <summary type="html"><![CDATA[
-<h2>How to find the bugs in the program</h2>
+    <updated>2024-12-16T05:33:42.000Z</updated>
+    <summary type="html"><![CDATA[<h2>How to find the bugs in the program</h2>
 <blockquote>
 <p>reference: https://nj.gitbooks.io/c/content/content/chapter10/chapter10-chinese.html</p>
 </blockquote>
@@ -29,8 +29,7 @@
 <li>live lock(condition not met)</li>
 <li>I/O block</li>
 </ul>]]></summary>
-    <content type="html"><![CDATA[
-<h2>How to find the bugs in the program</h2>
+    <content type="html"><![CDATA[<h2>How to find the bugs in the program</h2>
 <blockquote>
 <p>reference: https://nj.gitbooks.io/c/content/content/chapter10/chapter10-chinese.html</p>
 </blockquote>
@@ -318,21 +317,20 @@
 <span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">    return</span><span style="--shiki-light:#005CC5;--shiki-dark:#D19A66"> 0</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">;</span></span>
 <span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">}</span></span></code></pre>
 <div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>]]></content>
-    <published>2024-12-16T04:52:59.000Z</published>
+    <category term="ASC"/>
+    <published>2024-12-15T00:00:00.000Z</published>
   </entry>
   <entry>
-    <title type="text">1.cluster</title>
+    <title type="text">ASC2025 TEST_1_cluster</title>
     <id>https://newzone.top/posts/1_REPORT.html</id>
     <link href="https://newzone.top/posts/1_REPORT.html"/>
-    <updated>2024-12-16T04:52:59.000Z</updated>
-    <summary type="html"><![CDATA[
-<h2>Installation</h2>
+    <updated>2024-12-16T05:33:42.000Z</updated>
+    <summary type="html"><![CDATA[<h2>Installation</h2>
 <p>it's easy to finish the envirment settings, so I just talk about some issues occuered.</p>
 <h3>step1: unzip the <code>baseenv.tar.gz</code></h3>
 <div class="language-bash line-numbers-mode" data-highlighter="shiki" data-ext="bash" data-title="bash" style="--shiki-light:#24292e;--shiki-dark:#abb2bf;--shiki-light-bg:#fff;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes github-light one-dark-pro vp-code"><code><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#61AFEF">tar</span><span style="--shiki-light:#005CC5;--shiki-dark:#D19A66"> -xvf</span><span style="--shiki-light:#032F62;--shiki-dark:#98C379"> baseenv.tar.gz</span></span></code></pre>
 <div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div>]]></summary>
-    <content type="html"><![CDATA[
-<h2>Installation</h2>
+    <content type="html"><![CDATA[<h2>Installation</h2>
 <p>it's easy to finish the envirment settings, so I just talk about some issues occuered.</p>
 <h3>step1: unzip the <code>baseenv.tar.gz</code></h3>
 <div class="language-bash line-numbers-mode" data-highlighter="shiki" data-ext="bash" data-title="bash" style="--shiki-light:#24292e;--shiki-dark:#abb2bf;--shiki-light-bg:#fff;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes github-light one-dark-pro vp-code"><code><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#61AFEF">tar</span><span style="--shiki-light:#005CC5;--shiki-dark:#D19A66"> -xvf</span><span style="--shiki-light:#032F62;--shiki-dark:#98C379"> baseenv.tar.gz</span></span></code></pre>
@@ -569,7 +567,8 @@
 <p>tips: the container should exist the <code>hello</code> and the environment of the MPI.</p>
 </blockquote>
 ]]></content>
-    <published>2024-12-16T04:52:59.000Z</published>
+    <category term="ASC"/>
+    <published>2024-12-15T00:00:00.000Z</published>
   </entry>
   <entry>
     <title type="text">Diffusion（文生图、文生视频）推理服务</title>
