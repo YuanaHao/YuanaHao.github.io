@@ -1,6 +1,6 @@
 ---
 # 文章标题
-title: AISys_分布式开发
+title: MLSys_分布式开发
 # 设置写作时间
 date: 2024-10-28
 # 一个页面可以有多个分类
@@ -9,7 +9,7 @@ category:
 # 一个页面可以有多个标签
 tag:
   - 分布式系统
-  - AISys
+  - MLSys
   - 并行运算
 # 此页面会在文章列表置顶
 sticky: true
