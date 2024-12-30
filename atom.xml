@@ -4,15 +4,49 @@
   <title>CS_Blog</title>
   <subtitle>算法学习, 计算机公开课博客分享平台。</subtitle>
   <icon>https://newzone.top/favicon.ico</icon>
-  <updated>2024-12-26T15:58:06.863Z</updated>
+  <updated>2024-12-30T14:09:19.949Z</updated>
   <generator>@vuepress/plugin-feed</generator>
   <link rel="self" href="https://newzone.top/atom.xml"/>
   <link rel="alternate" href="https://newzone.top/"/>
+  <category term="计算机体系结构"/>
   <category term="ASC"/>
   <category term="SOSD"/>
   <category term="CS149_Lab"/>
   <category term="数据结构与算法"/>
   <category term="CS149"/>
+  <entry>
+    <title type="text">PA -- A new journey for the OS</title>
+    <id>https://newzone.top/posts/PA.html</id>
+    <link href="https://newzone.top/posts/PA.html"/>
+    <updated>2024-12-30T14:07:26.000Z</updated>
+    <summary type="html"><![CDATA[<blockquote>
+<p>This blog will begin from the half of PA1
+Because I thought "STFW" can solve the problems before.
+I have to confirm that I have install the Ubuntu 22.04 for my CS task, so I look through the PA0 in a fast way.</p>
+</blockquote>
+<h2>PA1 The simplest computer</h2>
+<h3>infrastructure</h3>]]></summary>
+    <content type="html"><![CDATA[<blockquote>
+<p>This blog will begin from the half of PA1
+Because I thought "STFW" can solve the problems before.
+I have to confirm that I have install the Ubuntu 22.04 for my CS task, so I look through the PA0 in a fast way.</p>
+</blockquote>
+<h2>PA1 The simplest computer</h2>
+<h3>infrastructure</h3>
+<blockquote>
+<p>There always exist infrastructure where exist codes.</p>
+</blockquote>
+<p>The course build a significant infrainstructure called <code>Simple Debugger</code>(sdb) in the NEMU.</p>
+<p>NEMU is regarded as a programm to excute other guest programm which means NEMU can know all information of the guest programm.</p>
+<p>However, the information is hard to be caught by the debugger out of the NEMU, such as GDB.(set a breakpoint by GDB for the guest programm is also hard)</p>
+<p>Inorder to improve the efficiency of debugging, we need to build a simple Debugger at the monitor.</p>
+<p>Below are the format and functions:<br>
+|instruction|format|example|explanation|
+|</p>
+]]></content>
+    <category term="计算机体系结构"/>
+    <published>2024-12-26T00:00:00.000Z</published>
+  </entry>
   <entry>
     <title type="text">ASC2025 TEST_0_CONCURRENCY</title>
     <id>https://newzone.top/posts/0_REPORT.html</id>

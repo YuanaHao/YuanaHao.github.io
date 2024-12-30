@@ -7,6 +7,19 @@
   "favicon": "https://newzone.top/favicon.ico",
   "items": [
     {
+      "title": "PA -- A new journey for the OS",
+      "url": "https://newzone.top/posts/PA.html",
+      "id": "https://newzone.top/posts/PA.html",
+      "summary": "This blog will begin from the half of PA1 Because I thought \"STFW\" can solve the problems before. I have to confirm that I have install the Ubuntu 22.04 for my CS task, so I loo...",
+      "content_html": "<blockquote>\n<p>This blog will begin from the half of PA1\nBecause I thought \"STFW\" can solve the problems before.\nI have to confirm that I have install the Ubuntu 22.04 for my CS task, so I look through the PA0 in a fast way.</p>\n</blockquote>\n<h2>PA1 The simplest computer</h2>\n<h3>infrastructure</h3>\n<blockquote>\n<p>There always exist infrastructure where exist codes.</p>\n</blockquote>\n<p>The course build a significant infrainstructure called <code>Simple Debugger</code>(sdb) in the NEMU.</p>\n<p>NEMU is regarded as a programm to excute other guest programm which means NEMU can know all information of the guest programm.</p>\n<p>However, the information is hard to be caught by the debugger out of the NEMU, such as GDB.(set a breakpoint by GDB for the guest programm is also hard)</p>\n<p>Inorder to improve the efficiency of debugging, we need to build a simple Debugger at the monitor.</p>\n<p>Below are the format and functions:<br>\n|instruction|format|example|explanation|\n|</p>\n",
+      "date_published": "2024-12-26T00:00:00.000Z",
+      "date_modified": "2024-12-30T14:07:26.000Z",
+      "authors": [],
+      "tags": [
+        "计算机体系结构"
+      ]
+    },
+    {
       "title": "ASC2025 TEST_0_CONCURRENCY",
       "url": "https://newzone.top/posts/0_REPORT.html",
       "id": "https://newzone.top/posts/0_REPORT.html",
