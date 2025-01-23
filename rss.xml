@@ -6,8 +6,8 @@
     <link>https://newzone.top/</link>
     <description>算法学习, 计算机公开课博客分享平台。</description>
     <language>zh-CN</language>
-    <pubDate>Thu, 02 Jan 2025 16:09:59 GMT</pubDate>
-    <lastBuildDate>Thu, 02 Jan 2025 16:09:59 GMT</lastBuildDate>
+    <pubDate>Thu, 23 Jan 2025 13:45:21 GMT</pubDate>
+    <lastBuildDate>Thu, 23 Jan 2025 13:45:21 GMT</lastBuildDate>
     <generator>@vuepress/plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <category>计算机体系结构</category>
@@ -1698,6 +1698,368 @@ N = [\frac{1}{2}log_{10}(2\pi n) + nlog_{10}(\frac{n}{e})] + 1
 <blockquote>
 <p>数即一切</p>
 </blockquote>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>ACM Try --01</title>
+      <link>https://newzone.top/posts/vjudge_solutions_1.html</link>
+      <guid>https://newzone.top/posts/vjudge_solutions_1.html</guid>
+      <source url="https://newzone.top/rss.xml">ACM Try --01</source>
+      <description>1. Dragon String (龙字符串) 题目描述 给定一个正整数N，要求输出一个特定的字符串，该字符串由一个&amp;apos;L&amp;apos;、N个&amp;apos;o&amp;apos;、一个&amp;apos;n&amp;apos;和一个&amp;apos;g&amp;apos;按顺序组成。 约束条件 1 ≤ N ≤ 2024 N为整数 解题思路 这是一道简单的字符串构造题，主要考察基础的字符串操作和循环控制。解题步骤如下： 读取输入整数N 输出字符&amp;apos;L&amp;apos; 循环N次输出字...</description>
+      <category>数据结构与算法</category>
+      <pubDate>Tue, 23 Jan 2024 00:00:00 GMT</pubDate>
+      <content:encoded><![CDATA[<h2>1. Dragon String (龙字符串)</h2>
+<h3>题目描述</h3>
+<p>给定一个正整数N，要求输出一个特定的字符串，该字符串由一个'L'、N个'o'、一个'n'和一个'g'按顺序组成。</p>
+<h3>约束条件</h3>
+<ul>
+<li>1 ≤ N ≤ 2024</li>
+<li>N为整数</li>
+</ul>
+<h3>解题思路</h3>
+<p>这是一道简单的字符串构造题，主要考察基础的字符串操作和循环控制。解题步骤如下：</p>
+<ol>
+<li>读取输入整数N</li>
+<li>输出字符'L'</li>
+<li>循环N次输出字符'o'</li>
+<li>最后输出字符'n'和'g'</li>
+</ol>
+<h3>易错点</h3>
+<ol>
+<li>输出字符的大小写问题：'L'必须是大写，'o'、'n'、'g'必须是小写</li>
+<li>循环次数控制：容易多输出或少输出一个'o'</li>
+<li>输出顺序：必须严格按照L-&gt;o-&gt;n-&gt;g的顺序</li>
+</ol>
+<h3>代码实现</h3>
+<div class="language-cpp line-numbers-mode" data-highlighter="shiki" data-ext="cpp" data-title="cpp" style="--shiki-light:#24292e;--shiki-dark:#abb2bf;--shiki-light-bg:#fff;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes github-light one-dark-pro vp-code"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">#include</span><span style="--shiki-light:#032F62;--shiki-dark:#98C379"> &lt;bits/stdc++.h&gt;</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">using</span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD"> namespace</span><span style="--shiki-light:#6F42C1;--shiki-dark:#E5C07B"> std</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">int</span><span style="--shiki-light:#6F42C1;--shiki-dark:#61AFEF"> main</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">() {</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">    int</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF"> n;</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    cin </span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">&gt;&gt;</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF"> n;</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    cout </span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">&lt;&lt;</span><span style="--shiki-light:#032F62;--shiki-dark:#98C379"> 'L'</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">    while</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF"> (n</span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">--</span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD"> &gt;</span><span style="--shiki-light:#005CC5;--shiki-dark:#D19A66"> 0</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">) {</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">        cout </span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">&lt;&lt;</span><span style="--shiki-light:#032F62;--shiki-dark:#98C379"> 'o'</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    }</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    cout </span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">&lt;&lt;</span><span style="--shiki-light:#032F62;--shiki-dark:#98C379"> 'n'</span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD"> &lt;&lt;</span><span style="--shiki-light:#032F62;--shiki-dark:#98C379"> 'g'</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">    return</span><span style="--shiki-light:#005CC5;--shiki-dark:#D19A66"> 0</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">}</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3>复杂度分析</h3>
+<ul>
+<li>时间复杂度：O(N)</li>
+<li>空间复杂度：O(1)</li>
+</ul>
+<h2>2. YES字符串判断</h2>
+<h3>题目描述</h3>
+<p>给定T个测试用例，每个用例包含一个字符串，判断该字符串是否等于"YES"（不区分大小写）。</p>
+<h3>约束条件</h3>
+<ul>
+<li>1 ≤ T ≤ 103</li>
+<li>输入字符串只包含大小写英文字母</li>
+</ul>
+<h3>解题思路</h3>
+<p>这是一道字符串比较题，主要考察字符串处理和大小写转换。解题要点：</p>
+<ol>
+<li>将输入字符串转换为小写</li>
+<li>与标准字符串"yes"比较</li>
+<li>注意处理大小写不敏感的比较</li>
+</ol>
+<h3>易错点</h3>
+<ol>
+<li>输入字符串长度未判断：虽然题目保证输入合法，但在实际工程中应该加上长度判断</li>
+<li>输出大小写问题：输出"YES"或"NO"时必须全部大写</li>
+<li>字符串比较前的转换：必须先将输入字符串转换为小写，再进行比较</li>
+<li>返回值处理：main函数末尾漏掉return 0</li>
+</ol>
+<h3>代码实现</h3>
+<div class="language-cpp line-numbers-mode" data-highlighter="shiki" data-ext="cpp" data-title="cpp" style="--shiki-light:#24292e;--shiki-dark:#abb2bf;--shiki-light-bg:#fff;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes github-light one-dark-pro vp-code"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">#include</span><span style="--shiki-light:#032F62;--shiki-dark:#98C379"> &lt;bits/stdc++.h&gt;</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">#include</span><span style="--shiki-light:#032F62;--shiki-dark:#98C379"> &lt;cctype&gt;</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">#include</span><span style="--shiki-light:#032F62;--shiki-dark:#98C379"> &lt;cstdio&gt;</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">using</span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD"> namespace</span><span style="--shiki-light:#6F42C1;--shiki-dark:#E5C07B"> std</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">int</span><span style="--shiki-light:#6F42C1;--shiki-dark:#61AFEF"> main</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">() {</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">    int</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF"> n;</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    cin </span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">&gt;&gt;</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF"> n;</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    string boolstr;</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">    while</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF"> (n </span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">--</span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD"> &gt;</span><span style="--shiki-light:#005CC5;--shiki-dark:#D19A66"> 0</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">) {</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">        cin </span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">&gt;&gt;</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF"> boolstr;</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#7F848E;--shiki-light-font-style:inherit;--shiki-dark-font-style:italic">        // 将整个字符串转换为小写</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">        for</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">char</span><span style="--shiki-light:#D73A49;--shiki-dark:#56B6C2"> &amp;</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">c : boolstr) {</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">            c </span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">=</span><span style="--shiki-light:#6F42C1;--shiki-dark:#61AFEF"> tolower</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">(c);</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">        }</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">        if</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF"> (boolstr </span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">==</span><span style="--shiki-light:#032F62;--shiki-dark:#98C379"> "yes"</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">) {</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#61AFEF">            printf</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#032F62;--shiki-dark:#98C379">"YES</span><span style="--shiki-light:#005CC5;--shiki-dark:#56B6C2">\n</span><span style="--shiki-light:#032F62;--shiki-dark:#98C379">"</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">);</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">        } </span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">else</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#61AFEF">            printf</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#032F62;--shiki-dark:#98C379">"NO</span><span style="--shiki-light:#005CC5;--shiki-dark:#56B6C2">\n</span><span style="--shiki-light:#032F62;--shiki-dark:#98C379">"</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">);</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">        }</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    }</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">}</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3>复杂度分析</h3>
+<ul>
+<li>时间复杂度：O(T×L)，其中L为字符串长度</li>
+<li>空间复杂度：O(1)</li>
+</ul>
+<h2>3. 奇偶判断</h2>
+<h3>题目描述</h3>
+<p>给定N个大整数，判断每个数的奇偶性。</p>
+<h3>约束条件</h3>
+<ul>
+<li>1 ≤ N ≤ 100</li>
+<li>输入整数不超过10^60</li>
+</ul>
+<h3>解题思路</h3>
+<p>这是一道大数处理题，但有一个重要的数学性质：一个数的奇偶性只取决于其最后一位数字。因此：</p>
+<ol>
+<li>将输入数字以字符串形式读入</li>
+<li>只需判断最后一个字符对应的数字的奇偶性</li>
+<li>无需进行完整的大数运算</li>
+</ol>
+<h3>易错点</h3>
+<ol>
+<li>大数处理方式：试图将输入转换为整数类型会导致溢出</li>
+<li>字符转数字：忘记将字符转换为数字（减去'0'）就直接判断</li>
+<li>输出格式：输出"odd"或"even"时必须全部小写</li>
+<li>边界情况：没有考虑输入为单个数字的情况</li>
+</ol>
+<h3>代码实现</h3>
+<div class="language-cpp line-numbers-mode" data-highlighter="shiki" data-ext="cpp" data-title="cpp" style="--shiki-light:#24292e;--shiki-dark:#abb2bf;--shiki-light-bg:#fff;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes github-light one-dark-pro vp-code"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">#include</span><span style="--shiki-light:#032F62;--shiki-dark:#98C379"> &lt;bits/stdc++.h&gt;</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">using</span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD"> namespace</span><span style="--shiki-light:#6F42C1;--shiki-dark:#E5C07B"> std</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">int</span><span style="--shiki-light:#6F42C1;--shiki-dark:#61AFEF"> main</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">() {</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">    int</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF"> n;</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    cin </span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">&gt;&gt;</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF"> n;</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    string num;</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">    while</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF"> (n</span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">--</span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD"> &gt;</span><span style="--shiki-light:#005CC5;--shiki-dark:#D19A66"> 0</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">) {</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">        cin </span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">&gt;&gt;</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF"> num;</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#7F848E;--shiki-light-font-style:inherit;--shiki-dark-font-style:italic">        // 只需要检查最后一位数字即可判断奇偶性</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">        if</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF"> ((</span><span style="--shiki-light:#24292E;--shiki-dark:#E5C07B">num</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#61AFEF">back</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">() </span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">-</span><span style="--shiki-light:#032F62;--shiki-dark:#98C379"> '0'</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">) </span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">%</span><span style="--shiki-light:#005CC5;--shiki-dark:#D19A66"> 2</span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD"> ==</span><span style="--shiki-light:#005CC5;--shiki-dark:#D19A66"> 1</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">)</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">            cout </span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">&lt;&lt;</span><span style="--shiki-light:#032F62;--shiki-dark:#98C379"> "odd</span><span style="--shiki-light:#005CC5;--shiki-dark:#56B6C2">\n</span><span style="--shiki-light:#032F62;--shiki-dark:#98C379">"</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">        else</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">            cout </span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">&lt;&lt;</span><span style="--shiki-light:#032F62;--shiki-dark:#98C379"> "even</span><span style="--shiki-light:#005CC5;--shiki-dark:#56B6C2">\n</span><span style="--shiki-light:#032F62;--shiki-dark:#98C379">"</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    }</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">    return</span><span style="--shiki-light:#005CC5;--shiki-dark:#D19A66"> 0</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">}</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3>复杂度分析</h3>
+<ul>
+<li>时间复杂度：O(N)</li>
+<li>空间复杂度：O(1)</li>
+</ul>
+<h2>4. 字符统计问题</h2>
+<h3>题目描述</h3>
+<p>给定一个字符串和目标次数m，需要计算使每个字符出现次数达到m次所需添加的最少字符数。</p>
+<h3>解题思路</h3>
+<p>这是一道哈希统计题，主要思路如下：</p>
+<ol>
+<li>使用哈希数组统计每个字符的出现次数</li>
+<li>对于每个字符，计算需要补充多少个才能达到目标次数m</li>
+<li>累加所有需要补充的字符数</li>
+</ol>
+<h3>易错点</h3>
+<ol>
+<li>哈希数组大小：vector初始化大小必须足够存储所有可能的字符</li>
+<li>字符映射：将字符转换为数组下标时的计算可能越界</li>
+<li>补充计算：当字符出现次数已经超过m时，不需要再补充</li>
+<li>测试用例处理：忘记处理多组测试用例的情况</li>
+</ol>
+<h3>代码实现</h3>
+<div class="language-cpp line-numbers-mode" data-highlighter="shiki" data-ext="cpp" data-title="cpp" style="--shiki-light:#24292e;--shiki-dark:#abb2bf;--shiki-light-bg:#fff;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes github-light one-dark-pro vp-code"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">#include</span><span style="--shiki-light:#032F62;--shiki-dark:#98C379"> &lt;bits/stdc++.h&gt;</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">using</span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD"> namespace</span><span style="--shiki-light:#6F42C1;--shiki-dark:#E5C07B"> std</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">int</span><span style="--shiki-light:#6F42C1;--shiki-dark:#61AFEF"> main</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">() {</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">    int</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF"> cnt;</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    cin </span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">&gt;&gt;</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF"> cnt;</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">    while</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF"> (cnt </span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">--</span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD"> &gt;</span><span style="--shiki-light:#005CC5;--shiki-dark:#D19A66"> 0</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">) {</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">        int</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF"> m, n;</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">        int</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF"> count </span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">=</span><span style="--shiki-light:#005CC5;--shiki-dark:#D19A66"> 0</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">        cin </span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">&gt;&gt;</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF"> n </span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">&gt;&gt;</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF"> m;</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">        string line;</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">        vector</span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">&lt;int&gt;</span><span style="--shiki-light:#6F42C1;--shiki-dark:#61AFEF"> hash</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#005CC5;--shiki-dark:#D19A66">7</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">);</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">        cin </span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">&gt;&gt;</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF"> line;</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">        for</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF"> (</span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">auto</span><span style="--shiki-light:#D73A49;--shiki-dark:#56B6C2"> &amp;</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">ch : line) {</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E5C07B">            hash</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">[</span><span style="--shiki-light:#6F42C1;--shiki-dark:#61AFEF">Hash</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">int</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">(ch </span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">-</span><span style="--shiki-light:#032F62;--shiki-dark:#98C379"> 'A'</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">))]</span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">++</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">        }</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">        for</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF"> (</span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">auto</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF"> k : hash) {</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">            if</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF"> (m </span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">&gt;</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF"> k)</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">                count </span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">+=</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF"> m </span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">-</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF"> k;</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">        }</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#61AFEF">        printf</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#032F62;--shiki-dark:#98C379">"</span><span style="--shiki-light:#005CC5;--shiki-dark:#D19A66">%d</span><span style="--shiki-light:#005CC5;--shiki-dark:#56B6C2">\n</span><span style="--shiki-light:#032F62;--shiki-dark:#98C379">"</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">, count);</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    }</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">    return</span><span style="--shiki-light:#005CC5;--shiki-dark:#D19A66"> 0</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">}</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3>复杂度分析</h3>
+<ul>
+<li>时间复杂度：O(T×N)，其中T为测试用例数，N为字符串长度</li>
+<li>空间复杂度：O(1)，因为哈希数组大小固定</li>
+</ul>
+<h2>5. 投票统计</h2>
+<h3>题目描述</h3>
+<p>给定n个人在m天内对规则k的投票情况，判断规则k是否符合民意。规则符合民意的条件是：在过半数的天数中，有过半数的人支持该规则。</p>
+<h3>解题思路</h3>
+<p>这是一道二维统计题，需要两层判断：</p>
+<ol>
+<li>对每一天统计支持规则k的人数，判断是否过半</li>
+<li>统计符合条件的天数是否过半</li>
+<li>使用排序来简化判断过半的操作</li>
+</ol>
+<h3>易错点</h3>
+<ol>
+<li>过半数计算：(n+1)/2 而不是 n/2，需要考虑奇数情况</li>
+<li>数组初始化：right数组的大小应该是m而不是当前的m值（因为m在循环中会减少）</li>
+<li>排序后的判断：需要判断right[0]和right[(days-1)/2]，而不是简单统计1的个数</li>
+<li>变量保存：需要保存原始的m值用于最后判断</li>
+</ol>
+<h3>代码实现</h3>
+<div class="language-cpp line-numbers-mode" data-highlighter="shiki" data-ext="cpp" data-title="cpp" style="--shiki-light:#24292e;--shiki-dark:#abb2bf;--shiki-light-bg:#fff;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes github-light one-dark-pro vp-code"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">#include</span><span style="--shiki-light:#032F62;--shiki-dark:#98C379"> &lt;bits/stdc++.h&gt;</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">using</span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD"> namespace</span><span style="--shiki-light:#6F42C1;--shiki-dark:#E5C07B"> std</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">int</span><span style="--shiki-light:#6F42C1;--shiki-dark:#61AFEF"> main</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">() {</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">    int</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF"> n, m, k;</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    cin </span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">&gt;&gt;</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF"> n </span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">&gt;&gt;</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF"> m </span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">&gt;&gt;</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF"> k;</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    vector</span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">&lt;int&gt;</span><span style="--shiki-light:#6F42C1;--shiki-dark:#61AFEF"> right</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">(m, </span><span style="--shiki-light:#005CC5;--shiki-dark:#D19A66">0</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">);</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">    int</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF"> days </span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">=</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF"> m;</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">    while</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF"> (m </span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">--</span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD"> &gt;</span><span style="--shiki-light:#005CC5;--shiki-dark:#D19A66"> 0</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">) {</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">        int</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF"> cnt </span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">=</span><span style="--shiki-light:#005CC5;--shiki-dark:#D19A66"> 0</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">        int</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF"> num </span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">=</span><span style="--shiki-light:#005CC5;--shiki-dark:#D19A66"> 0</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">        for</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF"> (</span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">int</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF"> i </span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">=</span><span style="--shiki-light:#005CC5;--shiki-dark:#D19A66"> 0</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">; i </span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">&lt;</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF"> n; i</span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">++</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">) {</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">            cin </span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">&gt;&gt;</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF"> num;</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">            if</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF"> (num </span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">==</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF"> k)</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">                cnt</span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">++</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">        }</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">        if</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF"> (cnt </span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">&gt;=</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF"> (n </span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">+</span><span style="--shiki-light:#005CC5;--shiki-dark:#D19A66"> 1</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">) </span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">/</span><span style="--shiki-light:#005CC5;--shiki-dark:#D19A66"> 2</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">) {</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E5C07B">            right</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">[m] </span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">=</span><span style="--shiki-light:#005CC5;--shiki-dark:#D19A66"> 1</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">        }</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    }</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#61AFEF">    sort</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#24292E;--shiki-dark:#E5C07B">right</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#61AFEF">begin</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">(), </span><span style="--shiki-light:#24292E;--shiki-dark:#E5C07B">right</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#61AFEF">end</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">(), [](</span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">int</span><span style="--shiki-light:#E36209;--shiki-dark:#E06C75;--shiki-light-font-style:inherit;--shiki-dark-font-style:italic"> x</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">, </span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">int</span><span style="--shiki-light:#E36209;--shiki-dark:#E06C75;--shiki-light-font-style:inherit;--shiki-dark-font-style:italic"> y</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">){</span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">return</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF"> x </span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">&gt;</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF"> y;});</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">    if</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF"> (</span><span style="--shiki-light:#24292E;--shiki-dark:#E5C07B">right</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">[</span><span style="--shiki-light:#005CC5;--shiki-dark:#D19A66">0</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">] </span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">==</span><span style="--shiki-light:#005CC5;--shiki-dark:#D19A66"> 1</span><span style="--shiki-light:#D73A49;--shiki-dark:#56B6C2"> &amp;&amp;</span><span style="--shiki-light:#24292E;--shiki-dark:#E5C07B"> right</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">[(days </span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">-</span><span style="--shiki-light:#005CC5;--shiki-dark:#D19A66"> 1</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">) </span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">/</span><span style="--shiki-light:#005CC5;--shiki-dark:#D19A66"> 2</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">] </span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">==</span><span style="--shiki-light:#005CC5;--shiki-dark:#D19A66"> 1</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">)</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#61AFEF">        printf</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#032F62;--shiki-dark:#98C379">"YES"</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">);</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">    else</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#61AFEF">        printf</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#032F62;--shiki-dark:#98C379">"NO"</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">);</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">    return</span><span style="--shiki-light:#005CC5;--shiki-dark:#D19A66"> 0</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">}</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3>复杂度分析</h3>
+<ul>
+<li>时间复杂度：O(M×N + MlogM)</li>
+<li>空间复杂度：O(M)</li>
+</ul>
+<h2>6. 字符替换</h2>
+<h3>题目描述</h3>
+<p>给定一个字符串S和Q次操作，每次操作将字符串中的某个字符全部替换为另一个字符。</p>
+<h3>解题思路</h3>
+<p>这是一道字符串模拟题，主要考察字符串的遍历和替换操作：</p>
+<ol>
+<li>读入初始字符串</li>
+<li>对每次操作，遍历整个字符串进行替换</li>
+<li>注意替换操作要同时进行，避免连锁反应</li>
+</ol>
+<h3>易错点</h3>
+<ol>
+<li>替换顺序：每次操作必须同时替换所有匹配的字符，不能边替换边比较</li>
+<li>自身替换：当c和d相同时也需要正确处理</li>
+<li>字符串修改：使用引用或指针修改字符串时的正确性</li>
+<li>输出格式：最后需要输出换行符</li>
+</ol>
+<h3>代码实现</h3>
+<div class="language-cpp line-numbers-mode" data-highlighter="shiki" data-ext="cpp" data-title="cpp" style="--shiki-light:#24292e;--shiki-dark:#abb2bf;--shiki-light-bg:#fff;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes github-light one-dark-pro vp-code"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">#include</span><span style="--shiki-light:#032F62;--shiki-dark:#98C379"> &lt;iostream&gt;</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">#include</span><span style="--shiki-light:#032F62;--shiki-dark:#98C379"> &lt;string&gt;</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">using</span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD"> namespace</span><span style="--shiki-light:#6F42C1;--shiki-dark:#E5C07B"> std</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">int</span><span style="--shiki-light:#6F42C1;--shiki-dark:#61AFEF"> main</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">() {</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">    int</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF"> N;</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    string S;</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">    int</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF"> Q;</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    cin </span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">&gt;&gt;</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF"> N </span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">&gt;&gt;</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF"> S </span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">&gt;&gt;</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF"> Q;</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">    for</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">int</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF"> i </span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">=</span><span style="--shiki-light:#005CC5;--shiki-dark:#D19A66"> 0</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">; i </span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">&lt;</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF"> Q; i</span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">++</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">) {</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">        char</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF"> c, d;</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">        cin </span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">&gt;&gt;</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF"> c </span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">&gt;&gt;</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF"> d;</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">        for</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">int</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF"> j </span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">=</span><span style="--shiki-light:#005CC5;--shiki-dark:#D19A66"> 0</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">; j </span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">&lt;</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF"> N; j</span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">++</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">) {</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">            if</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#24292E;--shiki-dark:#E5C07B">S</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">[j] </span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">==</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF"> c) {</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E5C07B">                S</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">[j] </span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">=</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF"> d;</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">            }</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">        }</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    }</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    cout </span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">&lt;&lt;</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF"> S </span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">&lt;&lt;</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF"> endl;</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">    return</span><span style="--shiki-light:#005CC5;--shiki-dark:#D19A66"> 0</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">}</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3>复杂度分析</h3>
+<ul>
+<li>时间复杂度：O(Q×N)</li>
+<li>空间复杂度：O(N)</li>
+</ul>
+<h2>7. 矩阵操作</h2>
+<h3>题目描述</h3>
+<p>给定一个n×n的矩阵和m次操作，每次操作可以交换两行或两列。</p>
+<h3>解题思路</h3>
+<p>这是一道矩阵模拟题，但有一个优化技巧：</p>
+<ol>
+<li>不直接修改矩阵，而是维护行列的映射关系</li>
+<li>每次交换只需要修改映射数组</li>
+<li>最后输出时根据映射关系重建矩阵</li>
+</ol>
+<h3>易错点</h3>
+<ol>
+<li>下标转换：输入的行列号从1开始，需要减1后再使用</li>
+<li>映射数组初始化：必须正确初始化row和col数组为0到n-1</li>
+<li>矩阵访问：输出时使用映射数组访问matrix[row[i]][col[j]]而不是直接访问</li>
+<li>输出格式：最后一个数字后不能有空格，需要换行</li>
+</ol>
+<h3>代码实现</h3>
+<div class="language-cpp line-numbers-mode" data-highlighter="shiki" data-ext="cpp" data-title="cpp" style="--shiki-light:#24292e;--shiki-dark:#abb2bf;--shiki-light-bg:#fff;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes github-light one-dark-pro vp-code"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">#include</span><span style="--shiki-light:#032F62;--shiki-dark:#98C379"> &lt;iostream&gt;</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">#include</span><span style="--shiki-light:#032F62;--shiki-dark:#98C379"> &lt;vector&gt;</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">using</span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD"> namespace</span><span style="--shiki-light:#6F42C1;--shiki-dark:#E5C07B"> std</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">int</span><span style="--shiki-light:#6F42C1;--shiki-dark:#61AFEF"> main</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">() {</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">    int</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF"> n, m;</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    cin </span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">&gt;&gt;</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF"> n </span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">&gt;&gt;</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF"> m;</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    vector</span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">&lt;</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">vector</span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">&lt;int&gt;&gt;</span><span style="--shiki-light:#6F42C1;--shiki-dark:#61AFEF"> matrix</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">(n, </span><span style="--shiki-light:#6F42C1;--shiki-dark:#61AFEF">vector</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">&lt;</span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">int</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">&gt;(n));</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">    for</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF"> (</span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">int</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF"> i </span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">=</span><span style="--shiki-light:#005CC5;--shiki-dark:#D19A66"> 0</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">; i </span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">&lt;</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF"> n; i</span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">++</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">) {</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">        for</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF"> (</span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">int</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF"> j </span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">=</span><span style="--shiki-light:#005CC5;--shiki-dark:#D19A66"> 0</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">; j </span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">&lt;</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF"> n; j</span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">++</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">) {</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">            cin </span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">&gt;&gt;</span><span style="--shiki-light:#24292E;--shiki-dark:#E5C07B"> matrix</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">[i][j];</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">        }</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    }</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    vector</span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">&lt;int&gt;</span><span style="--shiki-light:#6F42C1;--shiki-dark:#61AFEF"> row</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">(n), </span><span style="--shiki-light:#6F42C1;--shiki-dark:#61AFEF">col</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">(n);</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">    for</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF"> (</span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">int</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF"> i </span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">=</span><span style="--shiki-light:#005CC5;--shiki-dark:#D19A66"> 0</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">; i </span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">&lt;</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF"> n; i</span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">++</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">) {</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E5C07B">        row</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">[i] </span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">=</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF"> i;</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E5C07B">        col</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">[i] </span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">=</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF"> i;</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    }</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">    for</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF"> (</span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">int</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF"> i </span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">=</span><span style="--shiki-light:#005CC5;--shiki-dark:#D19A66"> 0</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">; i </span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">&lt;</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF"> m; i</span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">++</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">) {</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">        int</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF"> op, x, y;</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">        cin </span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">&gt;&gt;</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF"> op </span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">&gt;&gt;</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF"> x </span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">&gt;&gt;</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF"> y;</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">        x</span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">--</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">; y</span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">--</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">        if</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF"> (op </span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">==</span><span style="--shiki-light:#005CC5;--shiki-dark:#D19A66"> 1</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">) {</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#61AFEF">            swap</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#24292E;--shiki-dark:#E5C07B">row</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">[x], </span><span style="--shiki-light:#24292E;--shiki-dark:#E5C07B">row</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">[y]);</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">        } </span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">else</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#61AFEF">            swap</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#24292E;--shiki-dark:#E5C07B">col</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">[x], </span><span style="--shiki-light:#24292E;--shiki-dark:#E5C07B">col</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">[y]);</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">        }</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    }</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">    for</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF"> (</span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">int</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF"> i </span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">=</span><span style="--shiki-light:#005CC5;--shiki-dark:#D19A66"> 0</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">; i </span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">&lt;</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF"> n; i</span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">++</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">) {</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">        for</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF"> (</span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">int</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF"> j </span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">=</span><span style="--shiki-light:#005CC5;--shiki-dark:#D19A66"> 0</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">; j </span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">&lt;</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF"> n; j</span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">++</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">) {</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">            cout </span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">&lt;&lt;</span><span style="--shiki-light:#24292E;--shiki-dark:#E5C07B"> matrix</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">[</span><span style="--shiki-light:#24292E;--shiki-dark:#E5C07B">row</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">[i]][</span><span style="--shiki-light:#24292E;--shiki-dark:#E5C07B">col</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">[j]] </span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">&lt;&lt;</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF"> (j </span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">==</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF"> n</span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">-</span><span style="--shiki-light:#005CC5;--shiki-dark:#D19A66">1</span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD"> ?</span><span style="--shiki-light:#032F62;--shiki-dark:#98C379"> '</span><span style="--shiki-light:#005CC5;--shiki-dark:#56B6C2">\n</span><span style="--shiki-light:#032F62;--shiki-dark:#98C379">'</span><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD"> :</span><span style="--shiki-light:#032F62;--shiki-dark:#98C379"> ' '</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">);</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">        }</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    }</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">    return</span><span style="--shiki-light:#005CC5;--shiki-dark:#D19A66"> 0</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">}</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3>复杂度分析</h3>
+<ul>
+<li>时间复杂度：O(n² + m)</li>
+<li>空间复杂度：O(n²)</li>
+</ul>
+<h2>总结</h2>
+<p>这组题目涵盖了多个基础算法知识点：</p>
+<ol>
+<li>字符串处理（题目1、2、6）</li>
+<li>大数处理技巧（题目3）</li>
+<li>哈希统计（题目4）</li>
+<li>二维统计与排序（题目5）</li>
+<li>矩阵操作与状态维护（题目7）</li>
+</ol>
+<p>每道题都体现了一些重要的编程思想：</p>
+<ul>
+<li>善用数学性质简化问题（题目3）</li>
+<li>使用哈希表优化统计（题目4）</li>
+<li>排序简化判断（题目5）</li>
+<li>状态映射代替直接修改（题目7）</li>
+</ul>
+<p>这些思想在更复杂的算法题中都会经常用到。</p>
 ]]></content:encoded>
     </item>
   </channel>
