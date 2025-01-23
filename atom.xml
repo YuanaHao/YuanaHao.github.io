@@ -4,7 +4,7 @@
   <title>CS_Blog</title>
   <subtitle>算法学习, 计算机公开课博客分享平台。</subtitle>
   <icon>https://newzone.top/favicon.ico</icon>
-  <updated>2025-01-23T13:45:21.771Z</updated>
+  <updated>2025-01-23T13:53:09.008Z</updated>
   <generator>@vuepress/plugin-feed</generator>
   <link rel="self" href="https://newzone.top/atom.xml"/>
   <link rel="alternate" href="https://newzone.top/"/>
@@ -14,6 +14,7 @@
   <category term="CS149_Lab"/>
   <category term="CS61A"/>
   <category term="数据结构与算法"/>
+  <category term="算法与数据结构"/>
   <entry>
     <title type="text">PA -- A new journey for the OS</title>
     <id>https://newzone.top/posts/PA.html</id>
@@ -1757,10 +1758,10 @@ N = [\frac{1}{2}log_{10}(2\pi n) + nlog_{10}(\frac{n}{e})] + 1
     <published>2024-09-17T00:00:00.000Z</published>
   </entry>
   <entry>
-    <title type="text">ACM Try --01</title>
+    <title type="text">ACM Try -- 01</title>
     <id>https://newzone.top/posts/vjudge_solutions_1.html</id>
     <link href="https://newzone.top/posts/vjudge_solutions_1.html"/>
-    <updated>2025-01-23T13:43:11.000Z</updated>
+    <updated>2025-01-23T13:51:07.000Z</updated>
     <summary type="html"><![CDATA[<h2>1. Dragon String (龙字符串)</h2>
 <h3>题目描述</h3>
 <p>给定一个正整数N，要求输出一个特定的字符串，该字符串由一个'L'、N个'o'、一个'n'和一个'g'按顺序组成。</p>
@@ -2130,7 +2131,7 @@ N = [\frac{1}{2}log_{10}(2\pi n) + nlog_{10}(\frac{n}{e})] + 1
 </ul>
 <p>这些思想在更复杂的算法题中都会经常用到。</p>
 ]]></content>
-    <category term="数据结构与算法"/>
+    <category term="算法与数据结构"/>
     <published>2024-01-23T00:00:00.000Z</published>
   </entry>
 </feed>
